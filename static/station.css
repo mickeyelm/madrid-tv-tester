@@ -25,6 +25,21 @@ body.tv-mode { min-width: 0; height: 100vh; height: 100dvh; display: block; over
 #station-bug.is-shown { opacity: 1; }
 #station-bug .bug-i { color: rgba(255, 79, 0, 0.75); display: inline-block; animation: bug-pulse 4.6s ease-in-out infinite; }
 #station-bug::after { content: ""; position: absolute; inset: -4px -8px; background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.16) 50%, transparent 58%); transform: translateX(-120%); animation: bug-glint 13s linear infinite; }
+/* Jeremy's marks (station-marks.js): scratchy is the bug; the cyclone boots the station, fills OFF AIR
+   and stands in the bug's place while a channel tunes. No glint of the bug's own: scratchy has one. */
+#station-bug.has-mark { width: 150px; height: 121px; }
+#station-bug.has-mark .bug-text, #station-bug.has-mark::after { display: none; }
+#station-bug .bug-tag, #station-bug .bug-cyclone { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; transition: opacity 0.25s ease; }
+#station-bug .bug-tag { left: 0; right: 0; }
+#station-bug .bug-cyclone { left: 25px; right: 25px; opacity: 0; }
+#station-bug.is-tuning .bug-cyclone { opacity: 1; }
+#station-bug.is-tuning .bug-tag { opacity: 0; }
+#boot-black { position: absolute; inset: 0; background: #000; opacity: 0; transition: opacity 0.8s ease; }
+#boot-black.is-shown { opacity: 1; }
+#boot-black.is-shown:not(.is-live) { animation: boot-fallback 0.6s ease 3s forwards; }   /* the marks never loaded: the picture anyway */
+@keyframes boot-fallback { to { opacity: 0; } }
+#cyclone { position: absolute; left: 50%; top: 50%; width: 370px; height: 446px; margin: -223px 0 0 -185px; opacity: 0; transition: opacity 0.8s ease; }
+#cyclone.is-shown { opacity: 1; transition: opacity 0.3s ease; }
 @keyframes bug-drift { 0% { transform: translate(0, 0); } 25% { transform: translate(-7px, -5px); } 50% { transform: translate(-3px, -10px); } 75% { transform: translate(5px, -4px); } 100% { transform: translate(0, 0); } }
 @keyframes bug-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
 @keyframes bug-glint { 0%, 86% { transform: translateX(-120%); } 96%, 100% { transform: translateX(120%); } }
@@ -81,7 +96,7 @@ body.is-idle:not(.deck-open) { cursor: none; }
 /* The phone app's TV output: nothing on it is pressed; the channel ident sits small by the bug, bottom right. */
 body.host-output { cursor: none; }
 body.host-output #deck, body.host-output #deck-handle, body.host-output #sound-prompt, body.host-output #pair-card, body.host-output #webcam-consent, body.host-output #webcam-indicator { display: none !important; }
-body.host-output #channel-osd { top: auto; left: auto; right: 4.4%; bottom: 11.5%; font-size: 24px; letter-spacing: 0.08em; color: rgba(240, 237, 232, 0.85); text-shadow: 0 0 8px rgba(255, 79, 0, 0.35); }
+body.host-output #channel-osd { top: auto; left: auto; right: 4.4%; bottom: 24%; font-size: 24px; letter-spacing: 0.08em; color: rgba(240, 237, 232, 0.85); text-shadow: 0 0 8px rgba(255, 79, 0, 0.35); }
 @media (prefers-reduced-motion: reduce) { #sound-prompt { animation: none; } }
 
 /* A channel on the dial that runs only on the home station (dial entries with home: true). */

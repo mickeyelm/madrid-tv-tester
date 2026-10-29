@@ -11,6 +11,7 @@ Everything here keeps its own licence. Nothing in this list is MADRiD's.
 | pose-detection | `static/vendor/pose-detection/pose-detection.min.js` | 2.1.3 | Apache-2.0 | https://github.com/tensorflow/tfjs-models |
 | MoveNet SinglePose Lightning | `static/models/movenet-singlepose-lightning-4/` | v4 | Apache-2.0 | see `SOURCE.md` there |
 | Px437 IBM Model3x Alt4, Px437 IBM PS/55 | `static/assets/Px437_*.ttf` | Ultimate Oldschool PC Font Pack | CC BY-SA 4.0, VileR | https://int10h.org/oldschool-pc-fonts/ |
+| Px437 IBM VGA 8x16 (as 8x16 bitmaps) | `static/marks/cp437.json` | Ultimate Oldschool PC Font Pack v2.2 | CC BY-SA 4.0, VileR | https://int10h.org/oldschool-pc-fonts/ |
 | QR Code Generator for JavaScript | `static/vendor/qrcode-generator.js` | as vendored by the station | MIT, Kazuhiko Arase (licence in the file header) | https://github.com/kazuhikoarase/qrcode-generator |
 | Creepster | `static/assets/Creepster-Regular.ttf` | Google Fonts | SIL OFL 1.1 (`static/assets/Creepster-OFL.txt`), Font Diner | https://fonts.google.com/specimen/Creepster |
 | CH 03 programmes | streamed, not stored | | per item, see `lineup.json` `programs[*].license` | https://archive.org |

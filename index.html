@@ -8,9 +8,22 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="MADRiD TV">
-  <title>CHANNEL MADRiD</title>
-  <link rel="icon" href="static/assets/tuned-cell-symbol.svg">
-  <link rel="apple-touch-icon" href="static/assets/icon-180.png">
+  <title>MADRiD TV</title>
+  <!-- How a texted or posted link shows: the name and the cyclone, no copy. Absolute, as preview bots need. -->
+  <meta property="og:title" content="MADRiD TV">
+  <meta property="og:site_name" content="MADRiD TV">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mickeyelm.github.io/madrid-tv-tester/">
+  <meta property="og:image" content="https://mickeyelm.github.io/madrid-tv-tester/static/assets/og-madrid-tv.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MADRiD TV">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MADRiD TV">
+  <meta name="twitter:image" content="https://mickeyelm.github.io/madrid-tv-tester/static/assets/og-madrid-tv.png">
+  <link rel="icon" type="image/png" href="static/assets/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/assets/icon-180.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="static/channel.css?v=ba495f519c">
   <link rel="stylesheet" href="static/stain-tv.css?v=87ad9a7d29">
@@ -26,7 +39,7 @@
   <link rel="stylesheet" href="static/deck/19.css?v=dd02938fe0">
   <link rel="stylesheet" href="static/deck/24.css?v=d77d53af16">
   <link rel="stylesheet" href="static/deck/camera.css?v=a60aee56d2">
-  <link rel="stylesheet" href="static/station.css?v=095b56a5b3">
+  <link rel="stylesheet" href="static/station.css?v=f40456e662">
   <script type="importmap">
     {"imports":{"three":"./static/vendor/three/three.module.js","three/addons/":"./static/vendor/three/addons/"}}
   </script>
@@ -35,7 +48,6 @@
   <div id="stage">
     <main id="program-area" aria-live="polite">
 <section id="layer-off-air" class="channel-layer off-air-layer" data-layer="off-air">
-  <div class="station-bug">CHANNEL MADRiD</div>
 </section>
 <section id="layer-signal" class="channel-layer signal-layer" data-layer="signal">
       <video id="signal-video" class="signal-bg" autoplay muted loop playsinline src="static/media/signal/channel-madrid-test.mp4"></video>
@@ -245,8 +257,9 @@
     </main>
     <div id="overlay" aria-hidden="true">
       <canvas id="static-burst" width="320" height="240"></canvas>
+      <div id="boot-black" class="is-shown"></div>
       <div id="channel-osd"></div>
-      <div id="station-bug">MADR<span class="bug-i">i</span>D</div>
+      <div id="station-bug"><span class="bug-text">MADR<span class="bug-i">i</span>D</span></div>
     </div>
   </div>
   <button id="deck-handle" type="button" aria-label="Remote">REMOTE</button>
@@ -300,8 +313,9 @@
   <script src="static/deck/19.js?v=f2a4977905"></script>
   <script src="static/deck/24.js?v=bd935bdc74"></script>
   <script src="static/deck/camera.js?v=2ffaa207f4"></script>
-  <script src="static/station.js?v=c475b87dc3"></script>
+  <script src="static/station.js?v=5748c233b3"></script>
   <script src="static/vendor/qrcode-generator.js?v=0f6429df76"></script>
   <script src="static/pair.js?v=bca9a3a440"></script>
+  <script type="module" src="static/station-marks.js"></script>
 </body>
 </html>

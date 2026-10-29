@@ -158,7 +158,7 @@
     var context = canvas ? canvas.getContext("2d") : null;
     var osd = document.getElementById("channel-osd");
     var bug = document.getElementById("station-bug");
-    var burstUntil = 0, burstFrame = null, osdTimer = null, audioCtx = null;
+    var burstUntil = 0, burstFrame = null, osdTimer = null, audioCtx = null, lastTuned = null;
     var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     function hiss(duration) {
       try {
@@ -204,9 +204,19 @@
           osdTimer = window.setTimeout(function () { osd.classList.remove("is-shown"); }, 2600);
         }
         if (bug) { bug.classList.toggle("is-shown", channel.bug !== false && channel.id !== "off-air" && channel.id !== "alert"); }
+        announce(channel, false);
       },
-      boot: function (channel) { if (bug && channel) { bug.classList.toggle("is-shown", channel.bug !== false && channel.id !== "off-air" && channel.id !== "alert"); } }
+      boot: function (channel) {
+        if (bug && channel) { bug.classList.toggle("is-shown", channel.bug !== false && channel.id !== "off-air" && channel.id !== "alert"); }
+        if (channel) { announce(channel, true); }
+      },
+      tuned: function () { return lastTuned; }
     };
+    // What is on air, for the marks (static/station-marks.js): the cyclone on OFF AIR and while tuning.
+    function announce(channel, boot) {
+      lastTuned = {id: channel.id, number: channel.number, bug: Boolean(bug && bug.classList.contains("is-shown")), boot: boot};
+      window.dispatchEvent(new CustomEvent("madrid:tuned", {detail: lastTuned}));
+    }
   }());
 
   /* ---- applyState (tv.js, the public subset) ------------------------- */
@@ -453,7 +463,7 @@
   });
 
   /* ---- boot ------------------------------------------------------------ */
-  window.MadridShell = {tune: tune, step: step, renderDeck: renderDeck, dial: dial, state: state, fit: fit, setDeck: setDeck,
+  window.MadridShell = {tune: tune, step: step, renderDeck: renderDeck, dial: dial, state: state, fit: fit, setDeck: setDeck, tuned: overlay.tuned,
     deckOpen: function () { return Boolean(deck && deck.classList.contains("is-open")); },
     fullscreen: toggleFullscreen,
     // From a phone: on asks for sound, but only a tap on this screen can start it (soundReady says whether it has).
