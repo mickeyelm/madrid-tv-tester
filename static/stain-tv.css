@@ -1,0 +1,414 @@
+/* STAIN TV / CH 23.
+ *
+ * Deliberately outside channel.css. That file carries the station's flat
+ * contract — no gradients, no radii, no shadows — and is test-pinned to it.
+ * The descent needs a wash of blood and wet tissue, which that vocabulary
+ * cannot say. Keeping it here means CH 23 can look wrong without making the
+ * other twenty-two channels look wrong.
+ *
+ * Everything animates off four custom properties the driver writes each frame:
+ *   --stain-red       0..1  how far the white has gone
+ *   --stain-flesh     0..1  tissue density
+ *   --stain-approach  0..1  how close the bears are to the glass
+ *   --stain-wash      0..1  the clearing
+ */
+
+.stain-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #ffffff;
+  --stain-red: 0;
+  --stain-flesh: 0;
+  --stain-approach: 0;
+  --stain-wash: 0;
+}
+
+/* The card itself while we are still in the ten loops: CH 21's own animation,
+ * borrowed wholesale so the wait is genuinely the thing you have seen before. */
+.stain-layer .stain-card {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity .6s linear;
+}
+
+.stain-layer[data-phase="loop"] .stain-stage { opacity: 0; }
+.stain-layer:not([data-phase="loop"]) .stain-card { opacity: 0; }
+
+/* ---- the descent ------------------------------------------------------- */
+
+.stain-layer .stain-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity .8s linear;
+  isolation: isolate;
+  /* Blood arrives as a flat colour first, then a hot centre once it is deep.
+   * calc keeps the two in step without a second driver variable. */
+  background-color: rgb(
+    calc(18 + 214 * var(--stain-red)),
+    calc(18 * (1 - var(--stain-red))),
+    calc(20 * (1 - var(--stain-red)))
+  );
+}
+
+.stain-layer .stain-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--stain-red);
+  background: radial-gradient(
+    circle at 50% 46%,
+    rgba(255, 26, 26, .92) 0%,
+    rgba(150, 0, 0, .35) 46%,
+    rgba(0, 0, 0, .78) 100%
+  );
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.stain-layer .stain-stage::before {
+  content: "";
+  position: absolute;
+  inset: -14%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: calc(var(--stain-red) * .72);
+  background:
+    repeating-radial-gradient(ellipse at 50% 52%, transparent 0 18px, rgba(0, 0, 0, .34) 20px 23px, transparent 26px 41px),
+    conic-gradient(from 19deg at 50% 50%, rgba(0, 0, 0, .8), transparent 8%, rgba(255, 218, 180, .18) 11%, transparent 17%, rgba(0, 0, 0, .86) 28%, transparent 36%);
+  mix-blend-mode: multiply;
+  animation: stain-organ-pulse .83s steps(4, end) infinite;
+}
+
+.stain-layer .stain-regiment {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -8%;
+  z-index: 1;
+  height: 48%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  opacity: calc(var(--stain-red) * .62);
+  filter: blur(calc(4px - 2px * var(--stain-approach)));
+  transform: perspective(360px) rotateX(53deg) scale(calc(.82 + .42 * var(--stain-approach)));
+  transform-origin: 50% 100%;
+}
+
+.stain-layer .stain-regiment::before {
+  content: "";
+  position: absolute;
+  inset: 18% -20% 0;
+  background: repeating-linear-gradient(90deg, rgba(0, 0, 0, .72) 0 5px, transparent 5px 12px);
+  mask-image: linear-gradient(to top, #000 0 60%, transparent 100%);
+}
+
+.stain-layer .stain-regiment i {
+  position: relative;
+  width: 3.4%;
+  height: 54%;
+  background: #080000;
+  box-shadow: -18px 13px 0 rgba(18, 0, 0, .7), 19px 7px 0 rgba(18, 0, 0, .78);
+  transform-origin: 50% 100%;
+  transition: transform .04s steps(1, end);
+}
+
+.stain-layer .stain-regiment i::before {
+  content: "";
+  position: absolute;
+  left: -20%;
+  top: -22%;
+  width: 140%;
+  aspect-ratio: 1;
+  background: #080000;
+  border-radius: 50%;
+}
+
+.stain-layer[data-march="0"] .stain-regiment i:nth-child(odd),
+.stain-layer[data-march="1"] .stain-regiment i:nth-child(even) {
+  transform: translateY(-13%) rotate(-5deg) skewX(-4deg);
+}
+
+.stain-layer[data-march="1"] .stain-regiment i:nth-child(odd),
+.stain-layer[data-march="0"] .stain-regiment i:nth-child(even) {
+  transform: translateY(4%) rotate(6deg) skewX(5deg);
+}
+
+.stain-layer .stain-infection {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: calc(var(--stain-flesh) * .72);
+  background:
+    radial-gradient(circle at 12% 22%, transparent 0 2%, rgba(255, 184, 148, .7) 2.4% 2.8%, transparent 3.2%),
+    radial-gradient(circle at 82% 36%, transparent 0 3%, rgba(66, 0, 0, .88) 3.3% 4%, transparent 4.4%),
+    radial-gradient(circle at 47% 71%, transparent 0 5%, rgba(255, 90, 70, .32) 5.4% 6%, transparent 6.5%),
+    repeating-linear-gradient(113deg, transparent 0 34px, rgba(44, 0, 0, .42) 35px 37px, transparent 39px 68px);
+  mix-blend-mode: multiply;
+  animation: stain-infection-crawl 1.7s steps(7, end) infinite;
+}
+
+.stain-layer .stain-ruptures {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: calc(max(0, var(--stain-flesh) - .18) / .82);
+}
+
+.stain-layer .stain-ruptures i {
+  position: absolute;
+  top: -18%;
+  width: 2px;
+  height: 145%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 220, 190, .9) 18%, #130000 19% 72%, rgba(255, 60, 42, .72) 73%, transparent);
+  box-shadow: 4px 0 0 rgba(24, 0, 0, .7), -3px 0 0 rgba(255, 80, 55, .28);
+  transform: rotate(8deg) scaleY(var(--stain-flesh));
+  transform-origin: 50% 50%;
+}
+
+.stain-layer .stain-ruptures i:nth-child(1) { left: 13%; transform: rotate(-9deg) scaleY(var(--stain-flesh)); }
+.stain-layer .stain-ruptures i:nth-child(2) { left: 31%; top: -34%; }
+.stain-layer .stain-ruptures i:nth-child(3) { left: 52%; transform: rotate(-3deg) scaleY(var(--stain-flesh)); }
+.stain-layer .stain-ruptures i:nth-child(4) { left: 72%; top: -27%; transform: rotate(12deg) scaleY(var(--stain-flesh)); }
+.stain-layer .stain-ruptures i:nth-child(5) { left: 91%; transform: rotate(-7deg) scaleY(var(--stain-flesh)); }
+
+.stain-layer .stain-frame-tear {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: calc(var(--stain-flesh) * .48);
+  background: repeating-linear-gradient(0deg, transparent 0 7px, rgba(0, 0, 0, .34) 8px, transparent 9px 13px);
+  mix-blend-mode: hard-light;
+  animation: stain-frame-tear .19s steps(2, end) infinite;
+}
+
+.stain-layer .stain-bears {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  /* They come at the glass. 1 -> 2.6x, anchored low so the heads arrive first. */
+  transform: scale(calc(1 + 1.6 * var(--stain-approach)));
+  transform-origin: 50% 62%;
+}
+
+.stain-layer[data-phase="flesh"] .stain-bears,
+.stain-layer[data-phase="fill"] .stain-bears,
+.stain-layer[data-phase="anvil"] .stain-bears {
+  filter: url(#stain-corrupt) contrast(1.28) saturate(1.35) drop-shadow(11px 0 rgba(25, 0, 0, .58)) drop-shadow(-8px 3px rgba(255, 94, 64, .22));
+  animation: stain-bear-seizure .16s steps(2, end) infinite;
+}
+
+.stain-layer .stain-lines circle,
+.stain-layer .stain-lines path {
+  fill: none;
+  stroke: #111111;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+/* The drawn eyes and smile are what the tissue replaces. */
+.stain-layer .stain-pupils circle {
+  fill: #111111;
+  opacity: calc(1 - var(--stain-flesh));
+}
+
+.stain-layer .stain-smile { opacity: calc(1 - var(--stain-flesh)); }
+
+/* Two masses walking in from the sides of the skull until they meet. */
+.stain-layer .stain-flesh-mass {
+  fill: #7d1418;
+  opacity: var(--stain-flesh);
+}
+
+.stain-layer .stain-flesh-left {
+  transform: translateX(calc(-72px * (1 - var(--stain-flesh))));
+}
+
+.stain-layer .stain-flesh-right {
+  transform: translateX(calc(72px * (1 - var(--stain-flesh))));
+  fill: #94191d;
+}
+
+.stain-layer .stain-veins {
+  fill: none;
+  stroke: #2b0004;
+  stroke-width: calc(1px + 3px * var(--stain-flesh));
+  opacity: calc(max(0, var(--stain-flesh) - .08) / .92);
+  stroke-dasharray: 6 3;
+  animation: stain-vein-crawl .55s steps(5, end) infinite;
+}
+
+.stain-layer .stain-bud-eyes {
+  fill: #f6d8bd;
+  stroke: #050000;
+  stroke-width: 2;
+  opacity: calc(max(0, var(--stain-flesh) - .38) / .62);
+  transform-origin: 85px 78px;
+  animation: stain-eye-spasm .31s steps(3, end) infinite;
+}
+
+.stain-layer .stain-anatomy {
+  fill: none;
+  stroke: #d8b39a;
+  stroke-width: 7;
+  stroke-linecap: square;
+  opacity: calc(max(0, var(--stain-flesh) - .24) / .76);
+  filter: drop-shadow(0 0 4px #4b0000);
+}
+
+.stain-layer .stain-anatomy circle {
+  fill: #dfb69b;
+  stroke: #3c0000;
+  stroke-width: 3;
+}
+
+/* What the tissue leaves behind. Sockets and maw only exist once there is
+ * enough flesh for them to be holes in something. */
+.stain-layer .stain-socket {
+  fill: #050505;
+  opacity: calc(max(0, var(--stain-flesh) - .35) / .65);
+}
+
+.stain-layer .stain-maw {
+  fill: #16060a;
+  opacity: calc(max(0, var(--stain-flesh) - .45) / .55);
+  transform: scaleY(calc(.4 + 1.4 * var(--stain-flesh)));
+  transform-origin: 85px 100px;
+}
+
+.stain-layer .stain-teeth path {
+  fill: #f3e6cf;
+  opacity: calc(max(0, var(--stain-flesh) - .62) / .38);
+}
+
+/* Things moving in the hollows. */
+.stain-layer .stain-track { fill: none; stroke: none; }
+
+.stain-layer .stain-crawler {
+  fill: #b8262b;
+  opacity: calc(max(0, var(--stain-flesh) - .2) / .8);
+}
+
+.stain-layer .stain-crawler-jaw { fill: #8d1a1f; }
+
+/* ---- the drop ---------------------------------------------------------- */
+
+.stain-layer .stain-anvil {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 4;
+  width: 46%;
+  margin-left: -23%;
+  opacity: 0;
+}
+
+.stain-layer[data-phase="anvil"] .stain-anvil {
+  opacity: 1;
+  animation: stain-drop 3.9s cubic-bezier(.55, .02, .9, 1) 1 both;
+}
+
+/* It stays landed through the chorus while the wash does its work. */
+.stain-layer[data-phase="chorus"] .stain-anvil {
+  opacity: calc(1 - var(--stain-wash));
+  transform: translateY(52%);
+}
+
+@keyframes stain-drop {
+  0%   { transform: translateY(-115%) rotate(-6deg); }
+  86%  { transform: translateY(52%) rotate(2deg); }
+  92%  { transform: translateY(44%) rotate(-1deg); }
+  100% { transform: translateY(52%) rotate(0deg); }
+}
+
+/* ---- the wash ---------------------------------------------------------- */
+
+.stain-layer .stain-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: var(--stain-wash);
+  background: radial-gradient(
+    circle at 50% 78%,
+    rgba(96, 58, 20, .96) 0%,
+    rgba(74, 44, 14, .9) 38%,
+    rgba(52, 30, 8, .82) 62%,
+    rgba(40, 24, 6, 0) 100%
+  );
+  transform: scale(calc(.2 + 3.4 * var(--stain-wash)));
+  transform-origin: 50% 78%;
+}
+
+/* ---- the tape ---------------------------------------------------------- */
+
+.stain-layer .stain-evidence {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stain-layer[data-phase="evidence"] .stain-evidence {
+  opacity: 1;
+  transition: opacity 1.4s linear;
+}
+
+.stain-layer .stain-evidence img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@keyframes stain-organ-pulse {
+  0%, 100% { transform: scale(1) rotate(0); }
+  35% { transform: scale(1.04) rotate(.3deg); }
+  39% { transform: scale(.97) rotate(-.5deg); }
+  72% { transform: scale(1.025) rotate(.2deg); }
+}
+
+@keyframes stain-infection-crawl {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-2%, 1%) scale(1.06); }
+  66% { transform: translate(1%, -2%) scale(.98); }
+  100% { transform: translate(0, 0) scale(1.03); }
+}
+
+@keyframes stain-frame-tear {
+  0% { transform: translateX(-1.2%) skewX(-.5deg); clip-path: inset(0 0 61% 0); }
+  50% { transform: translateX(1.7%) skewX(.8deg); clip-path: inset(29% 0 22% 0); }
+  100% { transform: translateX(-.4%); clip-path: inset(72% 0 0 0); }
+}
+
+@keyframes stain-bear-seizure {
+  0% { translate: -1px 0; }
+  50% { translate: 2px -1px; }
+  100% { translate: 0 2px; }
+}
+
+@keyframes stain-vein-crawl {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -18; }
+}
+
+@keyframes stain-eye-spasm {
+  0%, 100% { transform: scaleY(.18) rotate(-2deg); }
+  34% { transform: scaleY(1.35) rotate(3deg); }
+  68% { transform: scaleY(.72) rotate(-4deg); }
+}

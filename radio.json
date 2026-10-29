@@ -1,0 +1,12 @@
+{
+  "_note": "CH 24 stations. Each is the station's own public listening stream, played straight from it to the visitor (nothing relayed, stored or re-published). NTS first: the station's own radio, from NTS's stream host (its geo address redirects there without the CORS header analysis needs). The visual reacts to the sound when a stream lets a page analyse it (CORS); a station marked cors false refuses that and is played directly from the start, and Safari always plays directly (WebKit routes live streams into Web Audio silently). Then the visual runs on a steady pulse and says so.",
+  "default": "nts1",
+  "stations": [
+    {"id": "nts1", "name": "NTS 1", "url": "https://streams.radiomast.io/nts1", "live": {"api": "https://www.nts.live/api/v2/live", "channel": "1"}},
+    {"id": "nts2", "name": "NTS 2", "url": "https://streams.radiomast.io/nts2", "live": {"api": "https://www.nts.live/api/v2/live", "channel": "2"}},
+    {"id": "radio-paradise", "name": "RADIO PARADISE", "url": "https://stream.radioparadise.com/mp3-192"},
+    {"id": "kexp", "name": "KEXP", "url": "https://kexp-mp3-128.streamguys1.com/kexp128.mp3"},
+    {"id": "dublab", "name": "DUBLAB", "url": "https://dublab.out.airtime.pro/dublab_a"},
+    {"id": "wfmu", "name": "WFMU", "url": "https://stream0.wfmu.org/freeform-128k", "cors": false}
+  ]
+}

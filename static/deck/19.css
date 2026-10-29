@@ -1,0 +1,16 @@
+/* MADRiD TV Web: CH 19 deck. The paintbox itself is the station's dikpix.css
+ * (#dikpix-panel.dikpix-studio); these rules seat it in the drawer. */
+.deck-panel-body > #dikpix-panel.dikpix-studio { margin: 0 auto; }
+/* 2026-10-29, MADRiD: the channel carries no decorative or explanatory copy. On
+ * the picture that is the empty-state lines, the title strip, the drawn tool rail
+ * and action footer (all aria-hidden decoration); on the remote, the tagline and
+ * the multi-player hand count (one hand here). The drawing, the paintbox tools
+ * and every control stay. Hidden here, so the station's files stay verbatim. */
+#layer-dikpix .dikpix-tv-header,
+#layer-dikpix .dikpix-tv-tools,
+#layer-dikpix .dikpix-tv-actions,
+#dikpix-tv-empty,
+#dikpix-panel .dp-header small,
+#dikpix-you-are,
+#dikpix-player-list { display: none !important; }
+#layer-dikpix .dikpix-tv-workspace { inset: 0 !important; }

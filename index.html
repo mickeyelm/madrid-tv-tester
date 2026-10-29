@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#000000">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="MADRiD TV">
+  <title>CHANNEL MADRiD</title>
+  <link rel="icon" href="static/assets/tuned-cell-symbol.svg">
+  <link rel="apple-touch-icon" href="static/assets/icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="static/channel.css?v=ba495f519c">
+  <link rel="stylesheet" href="static/stain-tv.css?v=87ad9a7d29">
+  <link rel="stylesheet" href="static/broadcast.css?v=7c734bf061">
+  <link rel="stylesheet" href="static/drone-tv.css?v=52c3aeac08">
+  <link rel="stylesheet" href="static/dikpix.css?v=13fa8e2beb">
+  <link rel="stylesheet" href="static/deck/00-21-23.css?v=1b8d71c216">
+  <link rel="stylesheet" href="static/deck/03.css?v=2fa88364b0">
+  <link rel="stylesheet" href="static/deck/05-13.css?v=8356d8d354">
+  <link rel="stylesheet" href="static/deck/09.css?v=60041b5b71">
+  <link rel="stylesheet" href="static/deck/14.css?v=cd555eb7e6">
+  <link rel="stylesheet" href="static/deck/15.css?v=d2f2ff6343">
+  <link rel="stylesheet" href="static/deck/19.css?v=dd02938fe0">
+  <link rel="stylesheet" href="static/deck/24.css?v=d77d53af16">
+  <link rel="stylesheet" href="static/deck/camera.css?v=a60aee56d2">
+  <link rel="stylesheet" href="static/station.css?v=095b56a5b3">
+  <script type="importmap">
+    {"imports":{"three":"./static/vendor/three/three.module.js","three/addons/":"./static/vendor/three/addons/"}}
+  </script>
+</head>
+<body class="tv-mode">
+  <div id="stage">
+    <main id="program-area" aria-live="polite">
+<section id="layer-off-air" class="channel-layer off-air-layer" data-layer="off-air">
+  <div class="station-bug">CHANNEL MADRiD</div>
+</section>
+<section id="layer-signal" class="channel-layer signal-layer" data-layer="signal">
+      <video id="signal-video" class="signal-bg" autoplay muted loop playsinline src="static/media/signal/channel-madrid-test.mp4"></video>
+      <div class="signal-scroll">
+        <div class="signal-crawl">
+          <div class="signal-track">
+            <div class="signal-line lg">CHANNEL MADRiD</div>
+            <div class="signal-line sm accent">CH 01 SIGNAL</div>
+            <time class="signal-line time" data-signal-clock>--:--:--</time>
+            <div class="signal-line sm">NEW YORK</div>
+            <div class="signal-line weather" data-signal-weather>WEATHER --</div>
+            <div class="signal-line sm accent">TRANSMISSION ONLINE</div>
+          </div>
+          <div class="signal-track" aria-hidden="true">
+            <div class="signal-line lg">CHANNEL MADRiD</div>
+            <div class="signal-line sm accent">CH 01 SIGNAL</div>
+            <time class="signal-line time" data-signal-clock>--:--:--</time>
+            <div class="signal-line sm">NEW YORK</div>
+            <div class="signal-line weather" data-signal-weather>WEATHER --</div>
+            <div class="signal-line sm accent">TRANSMISSION ONLINE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+<section id="layer-broadcast" class="channel-layer" data-layer="broadcast">
+      <video id="broadcast-video" muted playsinline preload="none" aria-label="CH03 scheduled broadcast"></video>
+      <div id="broadcast-card"><div id="broadcast-stamp"></div><h1 id="broadcast-title"></h1><p id="broadcast-detail"></p><div id="broadcast-next"></div></div>
+    </section>
+<section id="layer-camera" class="channel-layer camera-layer" data-layer="camera">
+      <video id="camera-video" autoplay muted playsinline></video>
+      <div id="camera-slate" class="camera-slate">
+        <div class="surface-kicker">CH 04 / LIVE EYE</div>
+        <div class="camera-word">CAMERA</div>
+        <div class="surface-status"><i></i> <span id="camera-status">AWAITING TRANSMITTER</span></div>
+      </div>
+    </section>
+<section id="layer-alert" class="channel-layer alert-layer" data-layer="alert">
+      <div id="alert-ribbons" aria-live="assertive"></div>
+      <div id="alert-empty">AWAITING TRANSMISSION</div>
+    </section>
+<section id="layer-drone" class="channel-layer drone-layer" data-layer="drone">
+      <canvas id="drone-field" aria-label="CH09 output waveform and frequency spectrum"></canvas>
+      <div class="drone-hud">
+        <span class="drone-hud-kicker">CH 09 DRONE</span>
+        <span id="drone-count">0 LAYERS</span>
+        <span id="drone-tuning-label">55 HZ</span>
+      </div>
+      <span id="drone-audio-status" role="status"></span>
+    </section>
+<section id="layer-aquarium" class="channel-layer aquarium-layer" data-layer="aquarium">
+  <canvas id="aquarium-canvas" aria-label="A living underwater aquarium"></canvas>
+</section>
+<section id="layer-alarm" class="channel-layer alarm-layer" data-layer="alarm">
+      <div class="alarm-registration alarm-registration-a">+</div>
+      <div class="alarm-registration alarm-registration-b">+</div>
+      <header class="alarm-header">
+        <span>CHANNEL MADRiD / CH 13</span>
+        <strong id="alarm-state">ALARM STANDBY</strong>
+      </header>
+      <div class="alarm-clock-face">
+        <div class="alarm-kicker">LOCAL WAKE TRANSMISSION</div>
+        <time id="alarm-clock" data-alarm-clock>--:--</time>
+        <div id="alarm-label">WAKE UP</div>
+      </div>
+      <div class="alarm-schedule-strip">
+        <span id="alarm-schedule">DAILY / 07:00</span>
+        <span id="alarm-instruction">ARM OR TEST FROM THE REMOTE</span>
+      </div>
+    </section>
+<section id="layer-synth" class="channel-layer synth-layer" data-layer="synth">
+      <canvas id="synth-program" width="960" height="720" aria-label="SYNTH VISIONS Signal Loom"></canvas>
+    </section>
+<section id="layer-playhouse" class="channel-layer playhouse-layer" data-layer="playhouse">
+  <canvas id="playhouse-canvas" aria-label="Marlin's Playhouse 3D game"></canvas>
+  <div id="playhouse-fallback" class="playhouse-fallback">
+    <span>CH 15 / BODY INPUT</span>
+    <strong>BUILDING THE PLAYHOUSE</strong>
+    <small id="playhouse-load-status">PROCEDURAL ROOM ACTIVE</small>
+  </div>
+  <div class="playhouse-chrome" aria-hidden="true">
+    <header class="playhouse-bar">
+      <span>CH 15 / MARLIN'S PLAYHOUSE</span>
+      <strong id="playhouse-sensor">KINECT: CHECKING</strong>
+      <time id="playhouse-time">04:00</time>
+    </header>
+    <div class="playhouse-score-block">
+      <span>PROPERTY DAMAGE</span>
+      <strong id="playhouse-score">000000</strong>
+      <small id="playhouse-combo">COMBO ×01</small>
+    </div>
+    <div class="playhouse-binsky-meter">
+      <span>BINSKY</span>
+      <i><b id="playhouse-binsky-fill"></b></i>
+    </div>
+    <div id="playhouse-instruction" class="playhouse-instruction">
+      STEP INTO FRAME / HOLD STILL TO ENTER
+    </div>
+    <div id="playhouse-results" class="playhouse-results">
+      <span>FINAL PROPERTY REPORT</span>
+      <strong id="playhouse-rank">ROOM TONE</strong>
+      <b id="playhouse-final-score">000000</b>
+      <small>START AGAIN FROM THE REMOTE</small>
+    </div>
+  </div>
+</section>
+<section id="layer-dikpix" class="channel-layer dikpix-tv" data-layer="dikpix">
+      <header class="dikpix-tv-header">
+        <span class="dikpix-tv-channel">CH 19</span>
+        <strong>diK-pix family edition 2000</strong>
+        <span id="dikpix-tv-presence" class="dikpix-tv-presence">0 DRAWING</span>
+      </header>
+      <div class="dikpix-tv-workspace">
+        <aside class="dikpix-tv-tools" aria-hidden="true">
+          <i class="is-active">✎</i>
+          <i>▰</i>
+          <i>╱</i>
+          <i>□</i>
+          <i>★</i>
+          <i>⁙</i>
+          <i>▨</i>
+          <i>A</i>
+          <i>⌫</i>
+        </aside>
+        <div id="dikpix-tv-paper" class="dikpix-tv-paper">
+          <canvas id="dikpix-tv-canvas" width="840" height="558" aria-label="diK-pix drawing"></canvas>
+          <div id="dikpix-tv-empty" class="dikpix-tv-empty">
+            <strong>ALL HANDS ON CANVAS</strong>
+            <span>OPEN THE REMOTE AND DRAW SOMETHING SILLY</span>
+          </div>
+          <div id="dikpix-tv-confetti" class="dikpix-tv-confetti" aria-hidden="true"></div>
+        </div>
+      </div>
+      <footer class="dikpix-tv-actions" aria-hidden="true">
+        <span>↶ UNDO</span>
+        <span>↷ REDO</span>
+        <span>□ NEW</span>
+        <span>▣ SAVE</span>
+        <strong>▶ PLAY</strong>
+      </footer>
+    </section>
+<section id="layer-stain" class="channel-layer stain-layer" data-layer="stain" data-phase="loop">
+  <div class="stain-card facetime-layer" aria-hidden="true">
+    <div class="facetime-bear-reveal">
+      <svg class="facetime-stick-bears" viewBox="0 0 900 330" role="img" aria-label="A family of stick figure bears">
+        <g transform="translate(80 40)"><circle cx="85" cy="78" r="54"/><circle cx="48" cy="38" r="23"/><circle cx="122" cy="38" r="23"/><circle cx="68" cy="70" r="4"/><circle cx="102" cy="70" r="4"/><path d="M70 95 Q85 106 100 95 M85 132 L85 240 M85 158 L28 205 M85 158 L142 205 M85 240 L42 302 M85 240 L128 302"/></g>
+        <g transform="translate(270 70) scale(.85)"><circle cx="85" cy="78" r="54"/><circle cx="48" cy="38" r="23"/><circle cx="122" cy="38" r="23"/><circle cx="68" cy="70" r="4"/><circle cx="102" cy="70" r="4"/><path d="M70 95 Q85 106 100 95 M85 132 L85 240 M85 158 L28 205 M85 158 L142 205 M85 240 L42 302 M85 240 L128 302"/></g>
+        <g transform="translate(440 120) scale(.58)"><circle cx="85" cy="78" r="54"/><circle cx="48" cy="38" r="23"/><circle cx="122" cy="38" r="23"/><circle cx="68" cy="70" r="4"/><circle cx="102" cy="70" r="4"/><path d="M70 95 Q85 106 100 95 M85 132 L85 240 M85 158 L28 205 M85 158 L142 205 M85 240 L42 302 M85 240 L128 302"/></g>
+        <g transform="translate(560 135) scale(.52)"><circle cx="85" cy="78" r="54"/><circle cx="48" cy="38" r="23"/><circle cx="122" cy="38" r="23"/><circle cx="68" cy="70" r="4"/><circle cx="102" cy="70" r="4"/><path d="M70 95 Q85 106 100 95 M85 132 L85 240 M85 158 L28 205 M85 158 L142 205 M85 240 L42 302 M85 240 L128 302"/></g>
+        <g transform="translate(680 90) scale(.72)"><circle cx="85" cy="78" r="54"/><circle cx="48" cy="38" r="23"/><circle cx="122" cy="38" r="23"/><circle cx="68" cy="70" r="4"/><circle cx="102" cy="70" r="4"/><path d="M70 95 Q85 106 100 95 M85 132 L85 240 M85 158 L28 205 M85 158 L142 205 M85 240 L42 302 M85 240 L128 302"/></g>
+      </svg>
+      <div class="facetime-bear-title">
+        <span>THE BERENSTAIN BEARS</span>
+        <strong>THE BERENSTEIN BEARS</strong>
+      </div>
+    </div>
+    <div class="facetime-coming-front" aria-label="Coming soon">
+      <h1>COMING SOON....</h1>
+      <div class="facetime-quill">
+        <svg viewBox="0 0 180 90"><path d="M165 8 C116 5 48 22 18 72 C50 66 76 62 106 39 C82 62 57 73 29 82 L35 86 C67 74 104 54 165 8 Z"/><path d="M20 81 L8 88"/></svg>
+      </div>
+      <div class="facetime-fairy-dust"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="facetime-shards"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <div class="stain-stage" aria-hidden="true">
+    <div class="stain-regiment">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="stain-infection"></div>
+    <div class="stain-ruptures"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="stain-frame-tear"></div>
+  </div>
+  <div class="stain-anvil" aria-hidden="true">
+    <svg viewBox="0 0 300 240">
+      <path d="M150 4 C196 4 232 34 232 74 C260 84 284 112 284 146 C284 196 232 236 150 236 C68 236 16 196 16 146 C16 112 40 84 68 74 C68 34 104 4 150 4 Z" fill="#5a3712"/>
+      <path d="M150 30 C182 30 206 52 206 78 C206 96 190 108 168 112 C196 118 218 140 218 164 C218 198 190 214 150 214 C110 214 82 198 82 164 C82 140 104 118 132 112 C110 108 94 96 94 78 C94 52 118 30 150 30 Z" fill="#6d4417"/>
+      <path d="M120 96 C130 88 142 88 150 94 M170 140 C182 132 196 134 202 142" stroke="#3d2409" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="stain-wash" aria-hidden="true"></div>
+  <div class="stain-evidence">
+    <img src="static/assets/berenstein-spines.svg" alt="Two VHS spines held together, one printed BERENSTAIN and one printed BERENSTEIN">
+  </div>
+</section>
+<section id="layer-nts" class="channel-layer radio-layer" data-layer="nts">
+      <canvas id="radio-visual" width="960" height="720"></canvas>
+      <div class="radio-slate">
+        <b data-radio-station>NTS 1</b>
+        <span data-radio-show></span>
+        <i data-radio-status>TUNING</i>
+      </div>
+      <audio id="radio-analysed" crossorigin="anonymous" preload="none"></audio>
+      <audio id="radio-direct" preload="none"></audio>
+    </section>
+<section id="layer-stained-2" class="channel-layer" data-layer="stained-2" style="background:#fff">
+      <video id="stained2-video" loop playsinline muted preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:fill" aria-label="Stained 2 — a two minute film"></video>
+      <div id="stained2-fault" hidden style="position:absolute;inset:0;place-content:center;text-align:center;background:white;color:black">STAINED 2<br>VIDEO UNAVAILABLE</div>
+    </section>
+<section id="layer-home" class="channel-layer home-layer" data-layer="home">
+  <div class="camera-slate home-slate">
+    <div class="home-kicker" data-home-kicker>CH 00</div>
+    <div class="home-word" data-home-name>CHANNEL MADRiD</div>
+    <div class="home-status"><i></i> <span>ON THE HOME STATION</span></div>
+  </div>
+</section>
+    </main>
+    <div id="overlay" aria-hidden="true">
+      <canvas id="static-burst" width="320" height="240"></canvas>
+      <div id="channel-osd"></div>
+      <div id="station-bug">MADR<span class="bug-i">i</span>D</div>
+    </div>
+  </div>
+  <button id="deck-handle" type="button" aria-label="Remote">REMOTE</button>
+  <div id="deck" class="deck" role="region" aria-label="Remote"></div>
+  <script src="static/station-api.js?v=e244892315"></script>
+  <script src="static/webcam.js?v=e321d6bac6"></script>
+  <script src="static/deck.js?v=b870e61394"></script>
+  <script src="static/shim/00-21-23.js?v=37d133d548"></script>
+  <script src="static/shim/01.js?v=2208759aab"></script>
+  <script src="static/shim/03.js?v=fb58e97ed2"></script>
+  <script src="static/shim/05-13.js?v=f4b9d9b885"></script>
+  <script src="static/shim/09.js?v=7213943c73"></script>
+  <script src="static/shim/12.js?v=880a627076"></script>
+  <script src="static/shim/14.js?v=b4cc9417e7"></script>
+  <script src="static/shim/15.js?v=b33cd38528"></script>
+  <script src="static/shim/19.js?v=838ca60a92"></script>
+  <script src="static/shim/24.js?v=cd6e8b62a4"></script>
+  <script src="static/shim/25.js?v=816f7f2422"></script>
+  <script src="static/shim/camera.js?v=cf13d65025"></script>
+  <script src="static/shim/drift.js?v=59b59e728b"></script>
+  <script src="static/drone-layer-model.js?v=b8320e0a0b"></script>
+  <script src="static/drone-effects.js?v=b11c226505"></script>
+  <script src="static/drone-environment.js?v=a6c8037c22"></script>
+  <script src="static/drone-oscilloscope.js?v=70509c17a3"></script>
+  <script src="static/tv-drone.js?v=f4722c3058"></script>
+  <script src="static/tv-aquarium.js?v=ba60f93653"></script>
+  <script src="static/dikpix-core.js?v=77b89cf241"></script>
+  <script src="static/dikpix-audio.js?v=8a51496c1e"></script>
+  <script src="static/tv-dikpix.js?v=0f71f74e59"></script>
+  <script type="module" src="static/synth-pocket-scene.js?v=0a68b60d75"></script>
+  <script src="static/synth-voicing.js?v=2532b9302b"></script>
+  <script src="static/synth-transport.js?v=b277526326"></script>
+  <script src="static/synth-patches.js?v=bd8af8b5e3"></script>
+  <script src="static/synth-visual-model.js?v=aad6c7667a"></script>
+  <script src="static/synth-controls.js?v=c7c569ec02"></script>
+  <script src="static/synth-strum.js?v=b6a849e052"></script>
+  <script src="static/synth-workshop.js?v=482c50146d"></script>
+  <script src="static/tv-synth.js?v=c359912a32"></script>
+  <script src="static/playhouse-core.js?v=c100422709"></script>
+  <script type="module" src="static/playhouse.js?v=c2f7ab5ab9"></script>
+  <script src="static/stain-timeline.js?v=0a7c70e1f8"></script>
+  <script src="static/stain-audio.js?v=ad03beb27c"></script>
+  <script src="static/stain-tv.js?v=c39de51733"></script>
+  <script src="static/tv-broadcast.js?v=75f80c2bdf"></script>
+  <script src="static/deck/00-21-23.js?v=21797ef0e0"></script>
+  <script src="static/deck/03.js?v=1e471337d3"></script>
+  <script src="static/deck/05-13.js?v=e6fafc0ab9"></script>
+  <script src="static/deck/09.js?v=e05c33e668"></script>
+  <script src="static/deck/14.js?v=3c47e01652"></script>
+  <script src="static/deck/15.js?v=c9814979ad"></script>
+  <script src="static/deck/19.js?v=f2a4977905"></script>
+  <script src="static/deck/24.js?v=bd935bdc74"></script>
+  <script src="static/deck/camera.js?v=2ffaa207f4"></script>
+  <script src="static/station.js?v=c475b87dc3"></script>
+  <script src="static/vendor/qrcode-generator.js?v=0f6429df76"></script>
+  <script src="static/pair.js?v=bca9a3a440"></script>
+</body>
+</html>

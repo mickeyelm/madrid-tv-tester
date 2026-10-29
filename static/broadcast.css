@@ -1,0 +1,9 @@
+#layer-broadcast{background:#000;color:#f3ebd0;font-family:var(--font-tv,monospace)}
+#broadcast-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#broadcast-card{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:9% 12%;background:linear-gradient(135deg,#191061,#07082d 65%);border:14px solid #101010}
+#broadcast-card[hidden],#broadcast-video[hidden]{display:none}
+#broadcast-card:before{content:"MADRiD";font-family:Jokerman,serif;font-size:clamp(50px,10vw,120px);color:#ffe600;line-height:1.1;text-shadow:5px 5px #ed125b;letter-spacing:-.06em}
+#broadcast-stamp{font-size:clamp(12px,2vw,24px);color:#60edcf;margin:1.2em 0}
+#broadcast-title{font-size:clamp(24px,4vw,50px);line-height:1.1;max-width:900px;margin:0 0 .5em}
+#broadcast-detail{font-size:clamp(12px,1.8vw,22px);line-height:1.5}
+#broadcast-next{border-top:2px solid #60edcf;padding-top:1em;margin-top:1em;font-size:clamp(13px,2vw,24px)}

@@ -1,0 +1,20 @@
+{
+  "_note": "The public dial. Numbers and names are the station's own; channels missing from this list exist on the home station but are not in the web edition (accounts, devices, private footage, pending clearances). camera: the channel asks for the visitor's webcam when tuned (a card first, works without it);",
+  "networks": {"MADRiD": "#ff4f00", "MARLIN": "#ffdc00"},
+  "channels": [
+    {"id": "off-air",   "number": "00", "name": "OFF AIR",            "network": "MADRiD", "bug": false},
+    {"id": "signal",    "number": "01", "name": "SIGNAL",             "network": "MADRiD", "bug": true},
+    {"id": "archive",   "number": "03", "name": "CHANNEL DRIFT",      "network": "MADRiD", "bug": true},
+    {"id": "camera",    "number": "04", "name": "CAMERA",             "network": "MADRiD", "bug": true, "camera": true},
+    {"id": "alert",     "number": "05", "name": "ALERT",              "network": "MADRiD", "bug": false},
+    {"id": "drone",     "number": "09", "name": "DRONE",              "network": "MADRiD", "bug": true, "camera": true},
+    {"id": "aquarium",  "number": "12", "name": "DEAD INTERNET",      "network": "MADRiD", "bug": true},
+    {"id": "alarm",     "number": "13", "name": "ALARM",              "network": "MADRiD", "bug": true},
+    {"id": "synth",     "number": "14", "name": "SYNTH VISIONS",      "network": "MADRiD", "bug": true},
+    {"id": "playhouse", "number": "15", "name": "MARLIN'S PLAYHOUSE", "network": "MARLIN", "bug": true, "camera": true},
+    {"id": "dikpix",    "number": "19", "name": "diK-pix FAMILY 2000","network": "MADRiD", "bug": true},
+    {"id": "stain",     "number": "23", "name": "STAINED 1",          "network": "MADRiD", "bug": true},
+    {"id": "nts",       "number": "24", "name": "NTS RADIO",          "network": "MADRiD", "bug": true},
+    {"id": "stained-2", "number": "25", "name": "STAINED 2",          "network": "MADRiD", "bug": true}
+  ]
+}

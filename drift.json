@@ -1,0 +1,197 @@
+{
+ "_note": "CH 03 CHANNEL DRIFT. Opening the channel shuffles among three modes; ?drift=<mode> picks one. programming: the AFTER THE FUTURE schedule in lineup.json. rock-of-love and reality-drift: Rock of Love, the official Banijay Reality full-episode uploads, played through YouTube's own embedded player (nothing downloaded, stored or re-published here), on the station's Rock of Love clock (the anchor and episode order of the living-room roster, so both are in step). reality-drift adds the drift: the picture distorts over a 30-minute descent and, after the camera card, the visitor's webcam supplies the room fragments the station's Kinect did. A page cannot read a YouTube picture or its sound, so there is no datamosh or audio echo here, only what sits over the player. Season 1 and S03E01 are not on the roster, as on the station.",
+ "modes": [
+  "programming",
+  "rock-of-love",
+  "reality-drift"
+ ],
+ "rockOfLove": {
+  "anchor_epoch": 1790750477.368882,
+  "credit": "Banijay Reality",
+  "descent_seconds": 1800,
+  "episodes": [
+   {
+    "season": 2,
+    "episode": 1,
+    "title": "Back to the Rocking Horse",
+    "youtube": "dW-AQMu0V4o",
+    "duration": 2340.01
+   },
+   {
+    "season": 2,
+    "episode": 2,
+    "title": "Peep Show",
+    "youtube": "6CyA6NFDoQo",
+    "duration": 2437.63
+   },
+   {
+    "season": 2,
+    "episode": 3,
+    "title": "Stroller Derby",
+    "youtube": "5RLwK5Sv13Y",
+    "duration": 2428.64
+   },
+   {
+    "season": 2,
+    "episode": 4,
+    "title": "A Ride on the Wild Side",
+    "youtube": "BlYVgjizzok",
+    "duration": 2422.61
+   },
+   {
+    "season": 2,
+    "episode": 5,
+    "title": "Mud Bowl II",
+    "youtube": "VZ1bykCYdXo",
+    "duration": 2416.08
+   },
+   {
+    "season": 2,
+    "episode": 6,
+    "title": "Once a Cowgirl",
+    "youtube": "dzerDwSPNqw",
+    "duration": 2416.11
+   },
+   {
+    "season": 2,
+    "episode": 7,
+    "title": "Red, White and a Little Blue",
+    "youtube": "iWNStbVCDs8",
+    "duration": 2449.01
+   },
+   {
+    "season": 2,
+    "episode": 8,
+    "title": "Video Vixens",
+    "youtube": "HMsf4NQXiqw",
+    "duration": 2416.34
+   },
+   {
+    "season": 2,
+    "episode": 9,
+    "title": "Going to Ex-tremes",
+    "youtube": "22FWAoz-Mg0",
+    "duration": 2428.06
+   },
+   {
+    "season": 2,
+    "episode": 10,
+    "title": "Bitter Suite",
+    "youtube": "LAGcd547t_U",
+    "duration": 2375.08
+   },
+   {
+    "season": 2,
+    "episode": 11,
+    "title": "Rockin' the 'Rents",
+    "youtube": "iGEFon-Lhvo",
+    "duration": 2394.91
+   },
+   {
+    "season": 2,
+    "episode": 12,
+    "title": "Bret's Rock of Love",
+    "youtube": "tXGELTp1ibE",
+    "duration": 3591.13
+   },
+   {
+    "season": 2,
+    "episode": 13,
+    "title": "Reunion",
+    "youtube": "_scROsm2ZDQ",
+    "duration": 2503.62
+   },
+   {
+    "season": 2,
+    "episode": 14,
+    "title": "The Clip Show",
+    "youtube": "YUHI3rDGL-8",
+    "duration": 1274.08
+   },
+   {
+    "season": 3,
+    "episode": 2,
+    "title": "Fifteen Weddings and Three Funerals",
+    "youtube": "VtZmvc07_SU",
+    "duration": 2445.57
+   },
+   {
+    "season": 3,
+    "episode": 3,
+    "title": "Babes on Ice",
+    "youtube": "Oy_FW0HGQIA",
+    "duration": 2437.42
+   },
+   {
+    "season": 3,
+    "episode": 4,
+    "title": "Roadies",
+    "youtube": "vQyRFuhyqX8",
+    "duration": 2414.53
+   },
+   {
+    "season": 3,
+    "episode": 5,
+    "title": "Eight Is Not Enough",
+    "youtube": "TIE9gQRls-A",
+    "duration": 2450.01
+   },
+   {
+    "season": 3,
+    "episode": 6,
+    "title": "Mudbowl III",
+    "youtube": "Rngod1uweOQ",
+    "duration": 2398.97
+   },
+   {
+    "season": 3,
+    "episode": 7,
+    "title": "Truck Stop Games",
+    "youtube": "RmMlLIVMNzk",
+    "duration": 2434.96
+   },
+   {
+    "season": 3,
+    "episode": 8,
+    "title": "Bikini Day Care",
+    "youtube": "PJerXo00BNY",
+    "duration": 2399.41
+   },
+   {
+    "season": 3,
+    "episode": 9,
+    "title": "Exes and Oh's!",
+    "youtube": "ETmjbkplYlo",
+    "duration": 2430.43
+   },
+   {
+    "season": 3,
+    "episode": 10,
+    "title": "Duet to Me One More Time",
+    "youtube": "AeP-3L1JX2o",
+    "duration": 2400.11
+   },
+   {
+    "season": 3,
+    "episode": 11,
+    "title": "Double Dates",
+    "youtube": "FfYYiUBbfNc",
+    "duration": 2423.54
+   },
+   {
+    "season": 3,
+    "episode": 12,
+    "title": "Bret's Rock of Love III",
+    "youtube": "-D8RScJkDCI",
+    "duration": 2332.61
+   },
+   {
+    "season": 3,
+    "episode": 13,
+    "title": "Reunion",
+    "youtube": "iRAtvZd307s",
+    "duration": 2511.08
+   }
+  ]
+ }
+}

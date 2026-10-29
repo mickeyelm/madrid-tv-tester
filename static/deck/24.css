@@ -1,0 +1,11 @@
+/* MADRiD TV Web: CH 24 NTS RADIO, the layer (static/layers/nts.html) and the remote panel. */
+#layer-nts { background: #050505; }
+#radio-visual { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+#layer-nts .radio-slate { position: absolute; left: 42px; bottom: 34px; display: grid; gap: 6px; font-family: "Madrid Display", monospace; text-shadow: 0 0 10px rgba(0, 0, 0, 0.9); pointer-events: none; }
+#layer-nts .radio-slate b { font-weight: normal; font-size: 30px; color: #ff4f00; letter-spacing: 0.06em; }
+#layer-nts .radio-slate span { font-size: 18px; color: #f0ede8; letter-spacing: 0.04em; max-width: 820px; }
+#layer-nts .radio-slate span:empty { display: none; }
+#layer-nts .radio-slate i { font-style: normal; font-size: 14px; color: var(--yellow, #f5c400); letter-spacing: 0.1em; }
+.radio-deck { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 4px; }
+:where(.deck-panel) .radio-deck button.is-on { border-color: #ff4f00; color: #ff4f00; }
+.radio-deck-status { margin: 8px 0 0; font-size: 12px; color: #f5a01e; letter-spacing: 0.04em; }

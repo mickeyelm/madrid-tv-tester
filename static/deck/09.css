@@ -1,0 +1,124 @@
+/* MADRiD TV Web: CH 09 DRONE deck panel. Ported from the station's remote rules
+ * in channel.css (surface-control-grid 910-931, touch-action 1719-1723, the
+ * "Remote: CH 09 DRONE instrument" block 1961-2071) and drone-remote.css (1-3,
+ * 8, 21-22), scoped under #drone-panel so no other panel's port collides. The
+ * calibration, profile and layer-list rules are not ported: those controls are
+ * not here. Tokens come from the shell's :root (channel.css 19-29); the
+ * fallbacks are the same values. */
+#drone-panel {
+  min-width: 0;
+  letter-spacing: 0;
+  background: #000;
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Mono", Monaco, monospace;
+}
+#drone-panel button,
+#drone-panel input { font: inherit; touch-action: manipulation; }
+
+#drone-panel .drone-pad-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: #040406;
+}
+#drone-pad {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+#drone-panel .drone-readout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+}
+#drone-node-count {
+  padding: 0 18px;
+  color: var(--yellow, #f5c400);
+  font-family: "Madrid Display", monospace;
+  font-size: 22px;
+}
+#drone-clear {
+  min-height: 56px;
+  padding: 0 22px;
+  border: 0;
+  border-left: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--warm, #f0ede8);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+#drone-clear:active { background: var(--signal, #ff4f00); color: #000; }
+
+#drone-command-status {
+  min-height: 20px;
+  padding: 0 18px;
+  color: var(--yellow, #f5c400);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+#drone-panel .drone-sliders { display: flex; flex-direction: column; }
+#drone-panel .drone-slider {
+  display: grid;
+  grid-template-columns: 92px 1fr 96px;
+  align-items: center;
+  gap: 10px;
+  min-height: 62px;
+  padding: 0 18px;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+}
+#drone-panel .drone-slider-name {
+  color: var(--warm, #f0ede8);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+#drone-panel .drone-slider-value {
+  color: var(--yellow, #f5c400);
+  font-family: "Madrid Display", monospace;
+  font-size: 16px;
+  text-align: right;
+}
+#drone-panel .drone-slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  background: transparent;
+}
+#drone-panel .drone-slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  background: var(--inactive, #2e2e2e);
+}
+#drone-panel .drone-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 30px;
+  margin-top: -13px;
+  background: var(--yellow, #f5c400);
+  border: 2px solid #000;
+}
+
+#drone-panel .drone-grid { display: grid; grid-template-columns: 1fr 1fr; }
+#drone-panel .drone-grid button {
+  min-height: 68px;
+  border: 0;
+  border-right: 1px solid var(--inactive, #2e2e2e);
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--warm, #f0ede8);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+#drone-panel .drone-grid button:last-child { border-right: 0; }
+#drone-panel .drone-grid button:active { background: var(--signal, #ff4f00); color: #000; }
+#drone-panel .drone-wave-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
+#drone-panel .drone-wave-row button.is-selected { background: var(--signal, #ff4f00); color: #000; }
+#drone-panel .drone-camera-row { grid-template-columns: 1fr; }
+#drone-panel .drone-camera-row button:disabled { color: var(--inactive, #2e2e2e); cursor: default; }

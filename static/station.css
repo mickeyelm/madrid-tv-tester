@@ -1,0 +1,119 @@
+/* MADRiD TV Web: what the page adds around the station's own channel styles. */
+@font-face { font-family: "Madrid Display"; src: url("assets/Px437_IBM_Model3x_Alt4.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Px437 IBM Model3x Alt4"; src: url("assets/Px437_IBM_Model3x_Alt4.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Px437 IBM Model3x"; src: url("assets/Px437_IBM_Model3x_Alt4.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Madrid Mono"; src: url("assets/Px437_IBM_PS-55_re.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Px437 IBM PS/55"; src: url("assets/Px437_IBM_PS-55_re.ttf") format("truetype"); font-display: block; }
+/* The station's Jokerman is a commercial face; Creepster (OFL) answers to the same name here. */
+@font-face { font-family: "Jokerman"; src: url("assets/Creepster-Regular.ttf") format("truetype"); font-display: block; }
+
+html, body { margin: 0; background: #000; }
+/* Fullscreen-first: the picture fills the window and the remote rides over it (station.js fit(), setDeck()). */
+body.tv-mode { min-width: 0; height: 100vh; height: 100dvh; display: block; overflow: hidden; }
+#stage { position: relative; width: 100%; height: 100vh; height: 100dvh; overflow: hidden; background: #000; }
+#stage #program-area {
+  position: absolute; left: 50%; top: var(--top, 0); margin-left: -480px;
+  transform-origin: 50% 0;
+  transform: scale(calc(var(--fit, 1) * 1.333333), var(--fit, 1));
+}
+/* The overlay rides above the picture at the tube's 1280x720, scaled with it, never stretched. */
+#overlay { position: absolute; left: 50%; top: var(--top, 0); width: 1280px; height: 720px; margin-left: -640px; transform-origin: 50% 0; transform: scale(var(--fit, 1)); pointer-events: none; z-index: 100; overflow: hidden; }
+#static-burst { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; image-rendering: pixelated; }
+#channel-osd { position: absolute; top: 5%; left: 6%; font-family: "Madrid Display", monospace; font-size: 64px; color: #46ff5e; letter-spacing: 0.04em; text-shadow: 0 0 14px rgba(70, 255, 94, 0.85), 3px 0 0 rgba(255, 40, 40, 0.35), -3px 0 0 rgba(40, 80, 255, 0.35); opacity: 0; transition: opacity 400ms ease; white-space: pre; }
+#channel-osd.is-shown { opacity: 1; transition: none; }
+#station-bug { position: absolute; right: 4.4%; bottom: 6%; font-family: "Madrid Display", monospace; font-size: 26px; color: rgba(240, 237, 232, 0.5); letter-spacing: 0.08em; text-shadow: 0 0 8px rgba(255, 79, 0, 0.35); animation: bug-drift 47s ease-in-out infinite; opacity: 0; transition: opacity 1.2s ease; }
+#station-bug.is-shown { opacity: 1; }
+#station-bug .bug-i { color: rgba(255, 79, 0, 0.75); display: inline-block; animation: bug-pulse 4.6s ease-in-out infinite; }
+#station-bug::after { content: ""; position: absolute; inset: -4px -8px; background: linear-gradient(115deg, transparent 42%, rgba(255, 255, 255, 0.16) 50%, transparent 58%); transform: translateX(-120%); animation: bug-glint 13s linear infinite; }
+@keyframes bug-drift { 0% { transform: translate(0, 0); } 25% { transform: translate(-7px, -5px); } 50% { transform: translate(-3px, -10px); } 75% { transform: translate(5px, -4px); } 100% { transform: translate(0, 0); } }
+@keyframes bug-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes bug-glint { 0%, 86% { transform: translateX(-120%); } 96%, 100% { transform: translateX(120%); } }
+@media (prefers-reduced-motion: reduce) { #overlay *, #overlay *::after { animation: none !important; transition: none !important; } }
+
+/* The remote, under the picture. */
+/* The remote: a drawer over the picture, closed until asked for. Wide: a phone-width column at the right
+ * (the station's panels are phone panels); tall or narrow: a sheet from the bottom. */
+#deck { position: fixed; z-index: 600; top: 0; right: 0; bottom: 0; width: clamp(320px, 30vw, 420px); box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain; background: rgba(10, 10, 10, 0.94); color: #f0ede8; font-family: "Madrid Mono", monospace; padding: 10px 12px 14px; border-left: 2px solid #1e1e1e; transform: translateX(100%); visibility: hidden; transition: transform 180ms ease, visibility 0s 180ms; }
+#deck.is-open { transform: none; visibility: visible; transition: transform 180ms ease; }
+@media (max-width: 719px), (max-aspect-ratio: 1/1) {
+  #deck { top: auto; left: 0; width: auto; max-height: 72vh; border-left: 0; border-top: 2px solid #1e1e1e; transform: translateY(100%); }
+}
+@media (prefers-reduced-motion: reduce) { #deck, #deck.is-open { transition: none; } }
+.deck-dial { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px; }
+.deck-channel { display: flex; align-items: baseline; gap: 6px; min-width: 0; background: #161616; border: 2px solid #333; color: #f0ede8; font-family: "Madrid Display", monospace; font-size: 12px; line-height: 1; padding: 8px 6px; cursor: pointer; letter-spacing: 0.04em; }
+.deck-channel span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; text-align: left; }
+.deck-channel b { color: #46ff5e; font-weight: normal; }
+.deck-channel.is-active { border-color: #ff4f00; color: #ff4f00; }
+.deck-channel.is-active b { color: #ff4f00; }
+.deck-tag { font-style: normal; font-size: 10px; color: #f5a01e; border: 1px solid currentColor; padding: 1px 3px; align-self: center; }
+.deck-panel { margin-top: 10px; border: 2px solid #262626; padding: 10px; }
+.deck-panel[hidden] { display: none; }
+.deck-panel-title { font-family: "Madrid Display", monospace; font-size: 13px; color: #f5a01e; letter-spacing: 0.1em; margin-bottom: 8px; }
+.deck-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.deck-actions button, :where(.deck-panel) button { background: #161616; border: 2px solid #333; color: #f0ede8; font-family: "Madrid Display", monospace; font-size: 13px; padding: 8px 10px; cursor: pointer; letter-spacing: 0.04em; }
+.deck-actions button.is-on { border-color: #46ff5e; color: #46ff5e; }
+:where(.deck-panel) input, :where(.deck-panel) select, :where(.deck-panel) textarea { background: #000; border: 2px solid #333; color: #f0ede8; font-family: "Madrid Mono", monospace; font-size: 14px; padding: 6px 8px; }
+#deck-handle { position: fixed; right: 12px; bottom: 12px; z-index: 500; display: none; background: #161616; border: 2px solid #ff4f00; color: #ff4f00; font-family: "Madrid Display", monospace; font-size: 13px; padding: 8px 10px; cursor: pointer; }
+body:has(#deck:not(.is-open)) #deck-handle { display: block; }
+/* Idle for 3 s: the handle and the pointer leave the picture, except on channels played from the remote. */
+#deck-handle { transition: opacity 400ms ease; }
+body.is-idle:not(.panel-channel) #deck-handle { opacity: 0; pointer-events: none; }
+body.is-idle:not(.deck-open) { cursor: none; }
+.deck-keys { margin-top: 8px; font-size: 11px; color: #8a8780; letter-spacing: 0.04em; }
+
+/* Camera permission card and the on-camera indicator (static/webcam.js). */
+#webcam-consent { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: rgba(0, 0, 0, 0.72); padding: 16px; }
+.webcam-consent-card { max-width: 440px; background: #050505; border: 2px solid #f5a01e; color: #f0ede8; font-family: "Madrid Mono", monospace; padding: 18px 20px; }
+.webcam-consent-kicker { display: block; font-family: "Madrid Display", monospace; font-size: 12px; color: #f5a01e; letter-spacing: 0.12em; }
+.webcam-consent-card strong { display: block; font-family: "Madrid Display", monospace; font-size: 20px; margin: 8px 0 10px; }
+.webcam-consent-card p { margin: 0 0 14px; font-size: 14px; line-height: 1.45; }
+.webcam-consent-actions { display: flex; gap: 8px; }
+.webcam-consent-actions button { background: #161616; border: 2px solid #333; color: #f0ede8; font-family: "Madrid Display", monospace; font-size: 13px; padding: 9px 12px; cursor: pointer; }
+.webcam-consent-actions [data-allow] { border-color: #46ff5e; color: #46ff5e; }
+#webcam-indicator { position: fixed; top: 10px; right: 10px; z-index: 900; display: none; align-items: center; gap: 8px; background: #050505; border: 2px solid #ff4f00; padding: 6px; color: #f0ede8; font-family: "Madrid Display", monospace; font-size: 12px; letter-spacing: 0.06em; }
+#webcam-indicator.is-shown { display: flex; }
+#webcam-indicator video { width: 96px; height: 72px; object-fit: cover; transform: scaleX(-1); background: #000; }
+#webcam-indicator button { background: #161616; border: 2px solid #333; color: #f0ede8; font-family: inherit; font-size: 11px; padding: 5px 7px; cursor: pointer; }
+
+/* Until the first tap or key (station.js onGesture). */
+#sound-prompt { position: absolute; left: 12px; bottom: 12px; z-index: 150; background: rgba(0, 0, 0, 0.78); border: 2px solid #ff4f00; color: #ff4f00; font-family: "Madrid Display", monospace; font-size: 13px; letter-spacing: 0.08em; padding: 8px 10px; cursor: pointer; animation: bug-pulse 2.4s ease-in-out infinite; }
+#sound-prompt[hidden] { display: none; }
+/* The phone app's TV output: nothing on it is pressed; the channel ident sits small by the bug, bottom right. */
+body.host-output { cursor: none; }
+body.host-output #deck, body.host-output #deck-handle, body.host-output #sound-prompt, body.host-output #pair-card, body.host-output #webcam-consent, body.host-output #webcam-indicator { display: none !important; }
+body.host-output #channel-osd { top: auto; left: auto; right: 4.4%; bottom: 11.5%; font-size: 24px; letter-spacing: 0.08em; color: rgba(240, 237, 232, 0.85); text-shadow: 0 0 8px rgba(255, 79, 0, 0.35); }
+@media (prefers-reduced-motion: reduce) { #sound-prompt { animation: none; } }
+
+/* A channel on the dial that runs only on the home station (dial entries with home: true). */
+.home-layer { background: #000; }
+.home-kicker { color: var(--yellow, #f5c400); font-family: "Madrid Display", monospace; font-size: 20px; letter-spacing: 0.12em; }
+.home-word { margin-top: 70px; color: var(--signal, #ff4f00); font-family: "Madrid Display", monospace; font-size: 96px; line-height: 0.9; letter-spacing: -0.03em; overflow-wrap: anywhere; }
+.home-status { position: absolute; left: 42px; bottom: 34px; color: var(--yellow, #f5c400); font-family: "Madrid Display", monospace; font-size: 18px; letter-spacing: 0.08em; }
+.home-status i { display: inline-block; width: 14px; height: 14px; margin-right: 10px; background: currentColor; animation: signal-blink 1.6s steps(2) infinite; }
+
+/* Click-through for channels that flash and shout (station.js GATES). */
+#gate { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: rgba(0, 0, 0, 0.82); padding: 16px; }
+.gate-card { background: #050505; border: 2px solid #ff4f00; color: #f0ede8; font-family: "Madrid Display", monospace; padding: 18px 22px; text-align: center; }
+.gate-card b { display: block; font-weight: normal; font-size: 22px; color: #46ff5e; letter-spacing: 0.06em; }
+.gate-card span { display: block; margin: 10px 0 14px; font-size: 14px; letter-spacing: 0.1em; color: #f5a01e; }
+.gate-actions { display: flex; gap: 8px; justify-content: center; }
+.gate-actions button { background: #161616; border: 2px solid #333; color: #f0ede8; font-family: inherit; font-size: 13px; padding: 9px 12px; cursor: pointer; }
+.gate-actions [data-tune] { border-color: #ff4f00; color: #ff4f00; }
+/* Under prefers-reduced-motion the stain's hard cuts slow to below three changes a second. */
+@media (prefers-reduced-motion: reduce) {
+  .stain-layer *, .stain-layer *::before, .stain-layer *::after { animation-duration: 1.5s !important; transition-duration: 0.5s !important; }
+}
+
+/* Phone remote (static/pair.js): the pairing card over the picture. */
+#pair-card { position: fixed; inset: 0; z-index: 950; display: grid; place-items: center; background: rgba(0, 0, 0, 0.78); padding: 16px; }
+.pair-box { display: grid; gap: 10px; justify-items: center; background: #050505; border: 2px solid #ff4f00; color: #f0ede8; font-family: "Madrid Display", monospace; padding: 18px 22px; max-width: 92vw; }
+.pair-box > b { font-weight: normal; color: #f5a01e; letter-spacing: 0.12em; font-size: 13px; }
+.pair-qr { width: 200px; height: 200px; background: #f0ede8; }
+.pair-qr svg { width: 100%; height: 100%; display: block; }
+.pair-box strong { font-weight: normal; font-size: 44px; letter-spacing: 0.08em; color: #46ff5e; }
+.pair-box > span { font-size: 12px; color: #8a8780; word-break: break-all; text-align: center; }
+.pair-phones { display: grid; gap: 6px; width: 100%; }
+.pair-phones span { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; }
+.pair-phones i { font-style: normal; }
+.pair-box button { background: #161616; border: 2px solid #333; color: #f0ede8; font-family: inherit; font-size: 12px; padding: 8px 10px; cursor: pointer; }
+.pair-actions { display: flex; gap: 8px; }

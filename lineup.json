@@ -1,0 +1,300 @@
+{
+  "_note": "CH 03 wall-clock schedule, ported from the station's config/broadcast-90s.json. Programmes stream from archive.org at the URL in programs[*].url; a slot whose programme is not cleared is shown as a stand-by card for the same duration so the two-hour cycle stays gapless. The station's Moving Image Archive ident and vault reels are compilations hosted on the home station, not here; they are replaced by drawn ident cards and the from-the-vault daypart is left out.",
+  "title": "AFTER THE FUTURE / 1992—1996",
+  "timezone": "America/New_York",
+  "anchor_epoch": 0,
+  "cycle_seconds": 7200,
+  "programs": {
+    "vr1992": {
+      "title": "The Computer Chronicles: Virtual Reality",
+      "year": 1992,
+      "duration": 1619.11,
+      "url": "https://archive.org/download/virtualreali/virtualreali.mp4",
+      "source": "https://archive.org/details/virtualreali",
+      "credit": "Stewart Cheifet Productions / The Computer Chronicles",
+      "license": "none recorded in archive.org metadata (collection: computerchronicles)",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-26: cleared for the public lineup, they are art"
+    },
+    "art1994": {
+      "title": "The Computer Chronicles: Computer Art",
+      "year": 1994,
+      "duration": 1607.71,
+      "url": "https://archive.org/download/CC1205_computer_art/CC1205_computer_art.mp4",
+      "source": "https://archive.org/details/CC1205_computer_art",
+      "credit": "Stewart Cheifet Productions / The Computer Chronicles",
+      "license": "CC BY-NC-ND 2.0 (archive.org metadata licenseurl)",
+      "cleared": true,
+      "clearedBy": "licence on the item"
+    },
+    "web1995": {
+      "title": "The Computer Chronicles: Internet",
+      "year": 1995,
+      "duration": 1622.49,
+      "url": "https://archive.org/download/CC1232_internet/CC1232_internet.mp4",
+      "source": "https://archive.org/details/CC1232_internet",
+      "credit": "Stewart Cheifet Productions / The Computer Chronicles",
+      "license": "none recorded in archive.org metadata (collection: computerchronicles)",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-26: cleared for the public lineup, they are art"
+    },
+    "music1995": {
+      "title": "The Computer Chronicles: Interactive Music",
+      "year": 1995,
+      "duration": 1607.73,
+      "url": "https://archive.org/download/CC1238_interactive_music/CC1238_interactive_music.mp4",
+      "source": "https://archive.org/details/CC1238_interactive_music",
+      "credit": "Stewart Cheifet Productions / The Computer Chronicles",
+      "license": "none recorded in archive.org metadata (collection: computerchronicles)",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-26: cleared for the public lineup, they are art"
+    },
+    "ads1993": {
+      "title": "QTQ-9 commercial break",
+      "year": 1993,
+      "duration": 183.83,
+      "url": "https://archive.org/download/1993-qtq-9-commercial-break-1/1993%20QTQ-9%20commercial%20break%20%281%29.ia.mp4",
+      "source": "https://archive.org/details/1993-qtq-9-commercial-break-1",
+      "credit": "Vintage commercial recording via Internet Archive",
+      "license": "none recorded in archive.org metadata",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-26: cleared for the public lineup, they are art"
+    },
+    "ads1996": {
+      "title": "Pay-per-view commercial break",
+      "year": 1996,
+      "duration": 182.04,
+      "url": "https://archive.org/download/vhs_Commercials_Pay_Per_View_1996/Commercials_Pay_Per_View_1996.ia.mp4",
+      "source": "https://archive.org/details/vhs_Commercials_Pay_Per_View_1996",
+      "credit": "Vintage commercial recording via Internet Archive",
+      "license": "none recorded in archive.org metadata",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-26: cleared for the public lineup, they are art"
+    },
+    "adsupn1996": {
+      "title": "UPN commercial breaks",
+      "year": 1996,
+      "duration": 291.78,
+      "url": "https://archive.org/download/1996-gargoyles-commercial-breaks/1996%20Gargoyles%20commercial%20breaks.mp4",
+      "source": "https://archive.org/details/1996-gargoyles-commercial-breaks",
+      "credit": "Vintage commercial recording via Internet Archive",
+      "license": "none recorded in archive.org metadata",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-26: cleared for the public lineup, they are art"
+    },
+    "made-here-stained2": {
+      "title": "MADE HERE / STAINED 2",
+      "year": 2026,
+      "duration": 53.31,
+      "url": "static/assets/made-here-stained2.mp4",
+      "credit": "A CHANNEL MADRiD production",
+      "license": "owner's own work; licence pending the repo LICENSE",
+      "cleared": false,
+      "clearedBy": "",
+      "note": "waits on the CH 25 consent decision (its four-channel audio carries both narrators); not in this repo"
+    },
+    "stained2-feature": {
+      "title": "STAINED 2 / Feature Presentation",
+      "year": 2026,
+      "duration": 120,
+      "url": "static/assets/stained2-v1.mp4",
+      "credit": "A CHANNEL MADRiD production",
+      "license": "owner's own work; licence pending the repo LICENSE",
+      "cleared": true,
+      "clearedBy": "MADRiD, 2026-10-29: STAINED 2 is critical; the stereo cut only (score and Foley, no narration), MADRiD's own film",
+      "note": "the stereo cut; the narrated master carries a second narrator's voice and is not in this repo"
+    }
+  },
+  "slots": [
+    {
+      "id": "ident0",
+      "kind": "ident",
+      "title": "CHANNEL MADRiD / A signal from another time",
+      "duration": 8
+    },
+    {
+      "id": "vr1992",
+      "kind": "program",
+      "asset": "vr1992",
+      "title": "The Computer Chronicles: Virtual Reality",
+      "duration": 1619.11,
+      "year": 1992
+    },
+    {
+      "id": "ads1993",
+      "kind": "ads",
+      "asset": "ads1993",
+      "title": "QTQ-9 commercial break",
+      "duration": 183.83,
+      "year": 1993
+    },
+    {
+      "id": "ident1",
+      "kind": "ident",
+      "title": "CHANNEL MADRiD / A signal from another time",
+      "duration": 8
+    },
+    {
+      "id": "art1994",
+      "kind": "program",
+      "asset": "art1994",
+      "title": "The Computer Chronicles: Computer Art",
+      "duration": 1607.71,
+      "year": 1994
+    },
+    {
+      "id": "ads1996",
+      "kind": "ads",
+      "asset": "ads1996",
+      "title": "Pay-per-view commercial break",
+      "duration": 182.04,
+      "year": 1996
+    },
+    {
+      "id": "ident2",
+      "kind": "ident",
+      "title": "CHANNEL MADRiD / A signal from another time",
+      "duration": 8
+    },
+    {
+      "id": "web1995",
+      "kind": "program",
+      "asset": "web1995",
+      "title": "The Computer Chronicles: Internet",
+      "duration": 1622.49,
+      "year": 1995
+    },
+    {
+      "id": "adsupn1996",
+      "kind": "ads",
+      "asset": "adsupn1996",
+      "title": "UPN commercial breaks",
+      "duration": 291.78,
+      "year": 1996
+    },
+    {
+      "id": "ident3",
+      "kind": "ident",
+      "title": "CHANNEL MADRiD / A signal from another time",
+      "duration": 8
+    },
+    {
+      "id": "music1995",
+      "kind": "program",
+      "asset": "music1995",
+      "title": "The Computer Chronicles: Interactive Music",
+      "duration": 1607.73,
+      "year": 1995
+    },
+    {
+      "id": "made-here",
+      "kind": "community",
+      "asset": "made-here-stained2",
+      "title": "MADE HERE / STAINED 2",
+      "duration": 53.31,
+      "year": 2026
+    }
+  ],
+  "dayparts": [
+    {
+      "id": "after-hours",
+      "title": "AFTER HOURS / STAINED SIGNALS",
+      "start_hour": 22,
+      "end_hour": 6,
+      "slots": [
+        {
+          "id": "after-hours-ident",
+          "kind": "ident",
+          "title": "CHANNEL MADRiD / AFTER HOURS",
+          "duration": 8
+        },
+        {
+          "id": "stained2-feature",
+          "kind": "program",
+          "asset": "stained2-feature",
+          "title": "STAINED 2 / Feature Presentation",
+          "duration": 120,
+          "year": 2026
+        },
+        {
+          "id": "after-hours-ident-1",
+          "kind": "ident",
+          "title": "CHANNEL MADRiD / The signal continues",
+          "duration": 8
+        },
+        {
+          "id": "after-hours-art1994",
+          "kind": "program",
+          "asset": "art1994",
+          "title": "The Computer Chronicles: Computer Art",
+          "duration": 1607.71,
+          "year": 1994
+        },
+        {
+          "id": "after-hours-ads1996",
+          "kind": "ads",
+          "asset": "ads1996",
+          "title": "Pay-per-view commercial break",
+          "duration": 182.04,
+          "year": 1996
+        },
+        {
+          "id": "after-hours-ident-2",
+          "kind": "ident",
+          "title": "CHANNEL MADRiD / AFTER HOURS",
+          "duration": 8
+        },
+        {
+          "id": "after-hours-web1995",
+          "kind": "program",
+          "asset": "web1995",
+          "title": "The Computer Chronicles: Internet",
+          "duration": 1622.49,
+          "year": 1995
+        },
+        {
+          "id": "after-hours-adsupn1996",
+          "kind": "ads",
+          "asset": "adsupn1996",
+          "title": "UPN commercial breaks",
+          "duration": 291.78,
+          "year": 1996
+        },
+        {
+          "id": "after-hours-ident-3",
+          "kind": "ident",
+          "title": "CHANNEL MADRiD / The signal continues",
+          "duration": 8
+        },
+        {
+          "id": "after-hours-music1995",
+          "kind": "program",
+          "asset": "music1995",
+          "title": "The Computer Chronicles: Interactive Music",
+          "duration": 1607.73,
+          "year": 1995
+        },
+        {
+          "id": "after-hours-intermission",
+          "kind": "ident",
+          "title": "CHANNEL MADRiD / Night transmission",
+          "duration": 109.14
+        },
+        {
+          "id": "after-hours-ident-4",
+          "kind": "ident",
+          "title": "CHANNEL MADRiD / One more vision",
+          "duration": 8
+        },
+        {
+          "id": "after-hours-vr1992",
+          "kind": "program",
+          "asset": "vr1992",
+          "title": "The Computer Chronicles: Virtual Reality",
+          "duration": 1619.11,
+          "year": 1992
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+/* MADRiD TV Web: ALERT and ALARM deck panels. Ported from the station's
+ * remote rules in channel.css (surface-control-grid 910-931, hero button
+ * 2083-2101, touch-action 1719-1723, CH 13 schedule deck 2148-2207), scoped
+ * under .deck-0513 so no other panel's port collides. Tokens come from the
+ * shell's :root (channel.css 19-29); the fallbacks are the same values. */
+.deck-0513 {
+  background: #000;
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Mono", Monaco, monospace;
+}
+.deck-0513 button,
+.deck-0513 input,
+.deck-0513 textarea { font: inherit; touch-action: manipulation; }
+
+.deck-0513-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.deck-0513-grid button {
+  min-height: 68px;
+  border: 0;
+  border-right: 1px solid var(--inactive, #2e2e2e);
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--warm, #f0ede8);
+  cursor: pointer;
+  transition: background 90ms ease, color 90ms ease, transform 60ms ease;
+}
+.deck-0513-grid button:nth-child(2n) { border-right: 0; }
+.deck-0513-grid button:active {
+  background: var(--signal, #ff4f00);
+  color: #000;
+  transform: scale(0.985);
+}
+
+/* CH 05: the message, then TRANSMIT / END ALERT. */
+.deck-0513-alert textarea {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 14px 18px;
+  border: 0;
+  border-bottom: 3px solid var(--signal, #ff4f00);
+  background: #000;
+  color: var(--warm, #f0ede8);
+  font-size: 18px;
+  line-height: 1.3;
+  resize: vertical;
+  outline: 0;
+}
+
+/* CH 13 schedule deck. */
+.deck-0513 .alarm-remote-status {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  color: var(--yellow, #f5c400);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+.deck-0513 .alarm-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+}
+.deck-0513 .alarm-field-label {
+  display: block;
+  padding: 12px 18px 16px;
+  color: var(--warm, #f0ede8);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+.deck-0513 .alarm-field-label:first-child { border-right: 1px solid var(--inactive, #2e2e2e); }
+.deck-0513 .alarm-field-label input {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  border-bottom: 3px solid var(--yellow, #f5c400);
+  background: #000;
+  color: var(--yellow, #f5c400);
+  font-family: "Madrid Display", monospace;
+  font-size: 30px;
+  outline: 0;
+}
+.deck-0513 .alarm-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+}
+.deck-0513 .alarm-days button {
+  min-height: 56px;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--warm, #f0ede8);
+  cursor: pointer;
+}
+.deck-0513 .alarm-days button:last-child { border-right: 0; }
+.deck-0513 .alarm-days button.is-selected { background: var(--yellow, #f5c400); color: #000; }
+.deck-0513 .alarm-ringing-actions button { background: var(--signal, #ff4f00); color: #000; }
+.deck-0513 .alarm-ringing-actions button:first-child { background: var(--yellow, #f5c400); }
+
+.deck-0513 .surface-hero-button {
+  display: block;
+  width: 100%;
+  min-height: 84px;
+  border: 0;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--signal, #ff4f00);
+  font-family: "Madrid Display", monospace;
+  font-size: 34px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 90ms ease, color 90ms ease;
+}
+.deck-0513 .surface-hero-button:active {
+  background: var(--signal, #ff4f00);
+  color: #000;
+}

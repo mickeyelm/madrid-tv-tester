@@ -1,0 +1,26 @@
+/* CH 21 FACETIME deck panel: the station's .surface-privacy card (channel.css:1047-1053). */
+.facetime-remote-status {
+  margin: 0;
+  padding: 14px 18px;
+  color: var(--yellow, #f5c400);
+  font-family: "Madrid Mono", monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+/* CH 23 under prefers-reduced-motion: the six stepped flickers in stain-tv.css
+ * (L86, 156, 192, 209, 249, 258; 4.8 to 12.5 hard cuts a second over a red/black
+ * full field) stop outright. The shell's blanket 1.5s slowdown (station.css:72-75)
+ * still leaves the 7-step and 5-step crawls above three changes a second. The
+ * poses, crawlers and the single 3.9s drop keep moving. */
+@media (prefers-reduced-motion: reduce) {
+  .stain-layer .stain-stage::before,
+  .stain-layer .stain-infection,
+  .stain-layer .stain-frame-tear,
+  .stain-layer[data-phase="flesh"] .stain-bears,
+  .stain-layer[data-phase="fill"] .stain-bears,
+  .stain-layer[data-phase="anvil"] .stain-bears,
+  .stain-layer .stain-veins,
+  .stain-layer .stain-bud-eyes { animation: none !important; }
+}

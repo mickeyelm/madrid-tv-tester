@@ -1,0 +1,8 @@
+/* The phone app's controls (phone.html): the station's faces and the deck panel frame, from station.css. */
+@font-face { font-family: "Madrid Display"; src: url("assets/Px437_IBM_Model3x_Alt4.ttf") format("truetype"); font-display: block; }
+@font-face { font-family: "Madrid Mono"; src: url("assets/Px437_IBM_PS-55_re.ttf") format("truetype"); font-display: block; }
+.phone-app #info { margin: 0 0 6px; color: #9a968e; font-size: 12px; letter-spacing: 0.06em; }
+.phone-app #perform button[aria-pressed="true"] { border-color: #ff4f00; color: #ff4f00; }
+.phone-app .deck-panel { margin: 10px 0; border: 2px solid #262626; padding: 10px; color: #f0ede8; font-family: "Madrid Mono", monospace; }
+.phone-app .deck-panel[hidden] { display: none; }
+.phone-app .deck-panel-title { font-family: "Madrid Display", monospace; font-size: 13px; color: #f5a01e; letter-spacing: 0.1em; margin-bottom: 8px; }

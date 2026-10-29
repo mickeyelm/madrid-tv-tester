@@ -1,0 +1,104 @@
+/* CH 15 MARLIN'S PLAYHOUSE deck: the station remote's playhouse panel, on the page. */
+.playhouse-deck {
+  background: #000;
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Mono", Monaco, monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.playhouse-deck button {
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.playhouse-deck-status {
+  padding: 18px;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+}
+
+.playhouse-deck-status span,
+.playhouse-deck-status strong {
+  display: block;
+}
+
+.playhouse-deck-status span {
+  margin-bottom: 8px;
+  color: var(--yellow, #f5c400);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+.playhouse-deck-status strong {
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Display", monospace;
+  font-size: 25px;
+  line-height: 0.95;
+}
+
+.playhouse-deck-hero {
+  display: block;
+  width: 100%;
+  min-height: 84px;
+  border: 0;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--signal, #ff4f00);
+  font-family: "Madrid Display", monospace;
+  font-size: 34px;
+  letter-spacing: 0.02em;
+  transition: background 90ms ease, color 90ms ease;
+}
+
+.playhouse-deck-hero:active {
+  background: var(--signal, #ff4f00);
+  color: #000;
+}
+
+.playhouse-deck-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.playhouse-deck-grid button {
+  min-height: 68px;
+  border: 0;
+  border-right: 1px solid var(--inactive, #2e2e2e);
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Mono", Monaco, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.playhouse-deck-grid button:nth-child(2n) { border-right: 0; }
+
+.playhouse-deck-grid [data-camera] {
+  grid-column: 1 / -1;
+  border-right: 0;
+}
+
+.playhouse-deck-grid button:active {
+  background: var(--signal, #ff4f00);
+  color: #000;
+}
+
+.playhouse-deck-grid button.is-live { color: #74ff54; }
+
+.playhouse-deck-binsky {
+  display: block;
+  width: 100%;
+  min-height: 72px;
+  border: 0;
+  background: #7d1000;
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Display", monospace;
+  font-size: 26px;
+}
+
+.playhouse-deck-binsky:active {
+  background: #ff1a00;
+  color: #000;
+}

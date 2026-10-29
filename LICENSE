@@ -1,0 +1,12 @@
+LICENCE: NOT YET CHOSEN
+
+This repository is published for reading and running, but no licence has been
+granted yet. The owner (MADRiD) is choosing between:
+
+  1. MIT for the code, with the station's own media (films, test card, puppet,
+     audio) under CC BY-NC 4.0, or
+  2. a single CC BY-NC 4.0 for everything.
+
+Until a licence file replaces this one, all rights are reserved. Third-party
+material (archive.org / Moving Image Archive programmes, three.js, cannon-es)
+keeps its own licence; see THIRD_PARTY.md.

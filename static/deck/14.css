@@ -1,0 +1,94 @@
+/* CH 14 SYNTH VISIONS deck: the phone remote's synth panel (channel.css
+ * 2460-2729, the Omnichord+ decks) on the page. Tokens come from the shell's
+ * channel.css :root; fallbacks are the same values. */
+
+/* Layer rule from channel.css 1913-1921: the shell's "recall" CSS strip took the
+ * `#synth-program, .synth-recall-player` block with it. Move back into the
+ * shell's channel.css keep set when that strip is narrowed. */
+#synth-program { position: absolute; inset: 0; width: 960px; height: 720px; background: #090806; image-rendering: pixelated; }
+
+.synth-remote { max-width: 480px; margin: 0 auto; background: #050505; color: var(--warm, #f0ede8); font-family: "Madrid Mono", monospace; }
+.synth-remote button { border-radius: 0; cursor: pointer; letter-spacing: 0.04em; font-family: "Madrid Mono", monospace; }
+.synth-remote input[type="range"] { background: transparent; border: 0; padding: 0; }
+.synth-remote-head { min-height: 116px; border-top: 1px solid var(--yellow, #f5c400); border-bottom: 1px solid var(--inactive, #2e2e2e); display: grid; grid-template-columns: 112px 1fr; align-items: center; }
+.synth-remote-head > div { display: flex; align-items: baseline; padding-left: 14px; }
+.synth-remote-head > div span { color: var(--yellow, #f5c400); font-size: 17px; }
+.synth-remote-head > div strong { font-family: "Madrid Display", monospace; font-size: 62px; font-weight: normal; }
+.synth-remote-head h2 { margin: 0; color: var(--signal, #ff4f00); font-family: "Madrid Display", monospace; font-size: 38px; font-weight: normal; line-height: 0.78; }
+.synth-transport-strip { padding: 12px 10px; border-bottom: 1px solid var(--inactive, #2e2e2e); }
+.synth-transport-strip > div:first-child { display: flex; align-items: baseline; justify-content: space-between; color: var(--yellow, #f5c400); font-size: 10px; }
+.synth-transport-strip strong { color: var(--warm, #f0ede8); font-family: "Madrid Display", monospace; font-size: 28px; font-weight: normal; }
+.synth-beat-rail { display: grid; grid-template-columns: repeat(32, 1fr); gap: 3px; height: 9px; margin-top: 8px; }
+.synth-beat-rail i { background: var(--inactive, #2e2e2e); }
+.synth-beat-rail i.is-event { background: var(--signal, #ff4f00); }
+.synth-beat-rail i.is-head { background: var(--yellow, #f5c400); }
+.synth-jam-status { min-height: 48px; padding: 13px 12px; border-bottom: 1px solid var(--signal, #ff4f00); color: var(--warm, #f0ede8); font-size: 10px; line-height: 1.45; letter-spacing: 0.08em; }
+.synth-deck-label { padding: 10px 10px 4px; font-size: 10px; letter-spacing: 0.22em; color: var(--yellow, #f5c400); border-bottom: 1px solid var(--inactive, #2e2e2e); }
+
+/* 01 / PICK A CHORD */
+.synth-remote .synth-chord-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.synth-remote .synth-chord-grid button { position: relative; min-height: 104px; padding: 0; border: 0; border-right: 1px solid var(--inactive, #2e2e2e); border-bottom: 1px solid var(--inactive, #2e2e2e); background: #050505; color: var(--warm, #f0ede8); text-align: center; }
+.synth-remote .synth-chord-grid button span { position: absolute; top: 7px; left: 7px; color: #777; font-size: 8px; }
+.synth-remote .synth-chord-grid button strong { display: block; font-family: "Madrid Display", monospace; font-size: 42px; font-weight: normal; }
+.synth-remote .synth-chord-grid button small { color: var(--yellow, #f5c400); font-size: 9px; }
+.synth-remote .synth-chord-grid button.is-looped { border-bottom: 5px solid var(--signal, #ff4f00); }
+.synth-remote .synth-chord-grid button.is-hit { background: var(--signal, #ff4f00); color: #000; }
+.synth-remote .synth-quality-bank { display: grid; grid-template-columns: repeat(6, 1fr); height: 48px; }
+.synth-remote .synth-quality-bank button { padding: 0; border: 0; border-right: 1px solid var(--inactive, #2e2e2e); border-bottom: 1px solid var(--inactive, #2e2e2e); background: #000; color: var(--warm, #f0ede8); font-size: 11px; }
+.synth-remote .synth-quality-bank button.is-active { background: var(--yellow, #f5c400); color: #000; }
+
+/* 02 / SWIPE TO PLAY */
+.synth-remote .synth-strum { height: 132px; margin: 8px 10px 6px; border: 2px solid var(--signal, #ff4f00); background: #120a02; display: flex; align-items: center; justify-content: center; touch-action: none; -webkit-user-select: none; user-select: none; cursor: crosshair; }
+.synth-remote .synth-strum.is-touched { background-color: #241404; }
+.synth-strum-hint { font-size: 11px; letter-spacing: 0.3em; color: var(--signal, #ff4f00); opacity: 0.7; pointer-events: none; }
+.synth-remote .synth-instrument-row { display: grid; grid-template-columns: 44px 1fr 44px 96px; gap: 6px; align-items: stretch; margin: 0 10px 8px; }
+.synth-remote .synth-instrument-row button { border: 1px solid var(--inactive, #2e2e2e); background: #000; color: var(--warm, #f0ede8); padding: 10px 0; font-size: 11px; touch-action: manipulation; }
+.synth-remote .synth-instrument-row strong { display: flex; align-items: center; justify-content: center; border: 1px solid var(--inactive, #2e2e2e); color: var(--yellow, #f5c400); font-size: 12px; letter-spacing: 0.08em; }
+.synth-remote .synth-instrument-row [data-strum-record].is-active { background: var(--signal, #ff4f00); color: #000; }
+
+/* 03 / ADD A BEAT, tools rows */
+.synth-remote .synth-kit-row, .synth-remote .synth-rhythm-row { display: grid; gap: 6px; margin: 8px 10px; }
+.synth-remote .synth-kit-row { grid-template-columns: repeat(4, 1fr); }
+.synth-remote .synth-rhythm-row { grid-template-columns: repeat(5, 1fr); }
+.synth-remote .synth-kit-row button, .synth-remote .synth-rhythm-row button, .synth-remote .synth-bpm-row button, .synth-remote .synth-body-row button { border: 1px solid var(--inactive, #2e2e2e); background: #000; color: var(--warm, #f0ede8); padding: 12px 0; font-size: 11px; touch-action: manipulation; }
+.synth-remote .synth-kit-row button.is-hit { background: var(--yellow, #f5c400); color: #000; }
+.synth-remote .synth-rhythm-row button.is-active { background: var(--yellow, #f5c400); color: #000; }
+.synth-remote .synth-bpm-row { display: grid; grid-template-columns: 1fr 92px; gap: 6px; align-items: center; margin: 8px 10px; }
+.synth-bpm-slider { display: grid; grid-template-columns: 34px 1fr 34px; gap: 6px; align-items: center; font-size: 10px; color: var(--yellow, #f5c400); }
+
+/* UNDO LAST / CLEAR LOOP */
+.synth-remote .synth-bottom-row { min-height: 44px; display: grid; grid-template-columns: 1fr 104px; border-bottom: 1px solid var(--inactive, #2e2e2e); }
+.synth-remote .synth-bottom-row button { border: 0; border-left: 1px solid var(--inactive, #2e2e2e); background: #000; color: var(--warm, #f0ede8); font-size: 9px; touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+.synth-remote .synth-jam-actions { grid-template-columns: 1fr 1fr; min-height: 62px; border-top: 1px solid var(--inactive, #2e2e2e); }
+.synth-remote .synth-jam-actions button:first-child { border-left: 0; }
+.synth-remote .synth-jam-actions [data-synth-clear] { background: #220a03; color: var(--signal, #ff4f00); }
+.synth-remote .synth-jam-actions [data-synth-clear].is-armed { background: var(--signal, #ff4f00); color: #000; }
+
+/* OPEN SOUND + LOOP TOOLS */
+.synth-tools { border-bottom: 1px solid var(--yellow, #f5c400); }
+.synth-tools summary { min-height: 62px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; background: var(--program, #080808); color: var(--yellow, #f5c400); cursor: pointer; font-size: 11px; letter-spacing: 0.12em; list-style: none; }
+.synth-tools summary::-webkit-details-marker { display: none; }
+.synth-tools summary:after { content: "+"; color: var(--signal, #ff4f00); font-family: "Madrid Display", monospace; font-size: 28px; }
+.synth-tools[open] summary:after { content: "−"; }
+
+/* PICTURE / GROOVE */
+.synth-remote .synth-expression { display: grid; grid-template-columns: 92px 1fr; min-height: 158px; border-bottom: 1px solid var(--inactive, #2e2e2e); }
+.synth-remote .synth-expression label, .synth-remote .synth-body-row label { display: flex; flex-direction: column; align-items: center; justify-content: space-around; color: var(--yellow, #f5c400); font-size: 10px; }
+.synth-remote .synth-expression input, .synth-remote .synth-body-row input { accent-color: var(--signal, #ff4f00); }
+.synth-vertical { border-right: 1px solid var(--inactive, #2e2e2e); }
+.synth-vertical input { width: 92px; transform: rotate(-90deg); }
+.synth-remote .synth-expression output, .synth-remote .synth-body-row output { color: var(--warm, #f0ede8); font-family: "Madrid Display", monospace; font-size: 28px; }
+.synth-signal input { width: 92%; }
+.synth-signal small { color: #777; font-size: 8px; }
+.synth-remote .synth-body-row { min-height: 64px; display: grid; grid-template-columns: 1fr 104px; align-items: stretch; border-bottom: 1px solid var(--yellow, #f5c400); }
+.synth-remote .synth-body-row label { flex-direction: row; gap: 10px; padding: 8px 12px; }
+.synth-remote .synth-body-row input { flex: 1; }
+.synth-remote .synth-body-row input:disabled { opacity: 0.45; }
+.synth-remote .synth-body-row button { border: 0; border-left: 1px solid var(--inactive, #2e2e2e); padding: 0; font-size: 9px; }
+.synth-remote .synth-body-row button.is-live { background: var(--signal, #ff4f00); color: #000; }
+.synth-event-count { min-height: 44px; padding: 15px 12px; border-bottom: 1px solid var(--inactive, #2e2e2e); color: var(--yellow, #f5c400); font-size: 9px; }
+
+@media (max-width: 430px) {
+  .synth-remote { width: 100%; }
+  .synth-remote .synth-chord-grid button { min-height: 96px; }
+}

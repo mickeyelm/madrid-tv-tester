@@ -1,0 +1,54 @@
+{
+  "license": "CC0-1.0",
+  "license_url": "https://polyhaven.com/license",
+  "source_pages": [
+    "https://polyhaven.com/a/rock_face_03",
+    "https://polyhaven.com/a/coast_sand_rocks_02",
+    "https://polyhaven.com/a/sand_01"
+  ],
+  "downloaded": "2026-09-05",
+  "files": [
+    {
+      "file": "rock_face_03_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_face_03/rock_face_03_diff_1k.jpg",
+      "sha256": "ea48e0e47ad42c8bd312476178b1248ec66f0eb19156a26a1c222f2a40caaf2d",
+      "bytes": 927082
+    },
+    {
+      "file": "rock_face_03_nor_gl_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_face_03/rock_face_03_nor_gl_1k.jpg",
+      "sha256": "c6423169583f31715cf0636954bad524e806848a5f2861fcea6794275f726ff0",
+      "bytes": 1146788
+    },
+    {
+      "file": "rock_face_03_rough_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_face_03/rock_face_03_rough_1k.jpg",
+      "sha256": "9e3d9a2fd75244892e7acb6bab2eaed1279299510a7970672c0ee27ff1c19fea",
+      "bytes": 638904
+    },
+    {
+      "file": "coast_sand_rocks_02_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/coast_sand_rocks_02/coast_sand_rocks_02_diff_1k.jpg",
+      "sha256": "78eae8ce6209f79417a15ba863fe828f983c22f7e63a9ee3ef504a0062a05ea9",
+      "bytes": 839184
+    },
+    {
+      "file": "sand_01_diff_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sand_01/sand_01_diff_1k.jpg",
+      "sha256": "a73b90eaa6d675ef57e7d48a8cf23e1f412e353ab2e29cf73930b8ecd4e76875",
+      "bytes": 485088
+    },
+    {
+      "file": "sand_01_nor_gl_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sand_01/sand_01_nor_gl_1k.jpg",
+      "sha256": "73984aecdc35b1ffbc322d64b7f8d8165b06970d11f37dd47010609fcb532704",
+      "bytes": 877821
+    },
+    {
+      "file": "sand_01_rough_1k.jpg",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sand_01/sand_01_rough_1k.jpg",
+      "sha256": "ccb179b12c56a9032d60e4f4e2da690b3612a58e1784eb14576372690cdcd1cb",
+      "bytes": 189667
+    }
+  ]
+}

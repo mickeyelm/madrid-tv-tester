@@ -1,0 +1,30 @@
+/* CH 03 deck panel: the station's remote tape list (channel.css:1572-1580,
+ * remote-deck.css:58-60), its .surface-privacy line (channel.css:1047-1053)
+ * and the deck's TUNING options (remote-deck.css:51-55). */
+.deck-panel .archive-list { font-family: "Madrid Mono", Monaco, monospace; font-size: 12px; letter-spacing: 0.08em; padding: 10px 12px; border: 1px solid rgba(255, 115, 0, 0.5); color: #ffb347; word-break: break-word; }
+.deck-panel .archive-list .broadcast-now { font-family: "Madrid Display", monospace; font-size: 22px; line-height: 1.2; padding: 14px 0; color: var(--yellow, #f5c400); }
+.deck-panel .archive-list p { margin: 0; }
+.deck-panel .archive-list ol { margin: 14px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.5; }
+.deck-panel .archive-list li { padding: 8px 0; border-top: 1px solid #333; }
+.deck-panel .surface-privacy { margin: 0; padding: 14px 18px; color: var(--yellow, #f5c400); font-family: "Madrid Mono", monospace; font-size: 12px; line-height: 1.4; }
+.deck-panel .deck-station-options { padding: 0 18px 10px; font-family: "Madrid Mono", monospace; font-size: 15px; line-height: 1.6; }
+.deck-panel .deck-station-options h2 { font-family: "Madrid Display", monospace; font-size: 18px; margin: 16px 0 10px; color: var(--warm, #f0ede8); }
+.deck-panel .deck-station-options label { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+.deck-panel .deck-station-options input { width: 22px; height: 22px; accent-color: var(--yellow, #f5c400); }
+.deck-panel .deck-settings-status { margin: 0; min-height: 1.6em; font-size: 13px; color: var(--yellow, #f5c400); }
+
+/* CH 03 CHANNEL DRIFT (static/shim/drift.js): Rock of Love and Reality Drift ride over the station's player. */
+#drift-stage { position: absolute; inset: 0; z-index: 3; display: none; overflow: hidden; pointer-events: none; }
+#drift-stage.is-on { display: block; }
+#drift-stage.is-youtube { background: #000; pointer-events: auto; }
+#drift-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; transform-origin: 50% 50%; display: none; }
+#drift-stage.is-youtube #drift-player { display: block; }
+#drift-slate { position: absolute; inset: 0; display: grid; place-content: center; gap: 14px; text-align: center; background: rgba(0, 0, 0, 0.82); font-family: "Madrid Display", monospace; }
+#drift-slate[hidden] { display: none; }
+#drift-slate b { font-weight: normal; font-size: 40px; color: #ff4f00; letter-spacing: 0.04em; }
+#drift-slate span { font-size: 18px; color: var(--yellow, #f5c400); letter-spacing: 0.08em; }
+#drift-room { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; mix-blend-mode: screen; pointer-events: none; image-rendering: pixelated; transition: opacity 2s linear; }
+#drift-stage.is-drift #drift-room { mix-blend-mode: difference; }
+#drift-credit { position: absolute; left: 24px; bottom: 18px; font-family: "Madrid Display", monospace; font-size: 14px; color: rgba(240, 237, 232, 0.8); letter-spacing: 0.06em; text-shadow: 0 0 6px #000; pointer-events: none; }
+.drift-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 8px; }
+:where(.deck-panel) .drift-modes button.is-on { border-color: #ff4f00; color: #ff4f00; }

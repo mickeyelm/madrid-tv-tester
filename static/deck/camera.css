@@ -1,0 +1,85 @@
+/* MADRiD TV Web: CH 04 CAMERA. The layer's own rules (.camera-layer,
+ * #camera-video, .camera-slate, .camera-word) ship in the shell's channel.css
+ * (780-824; station 1757-1806), so they are not repeated. Added here: the
+ * mirror on the picture (it is the visitor's own face now) and the shared
+ * slate rules .surface-kicker / .surface-status (station channel.css 464-468,
+ * 491-508), which the shell's cut dropped, scoped under .camera-layer. The
+ * deck rules port the remote's camera panel (channel.css 1934-1953). Tokens
+ * come from the shell's :root (channel.css 19-29); the fallbacks are the same
+ * values. */
+#camera-video { transform: scaleX(-1); }
+
+.camera-layer .surface-kicker {
+  color: var(--yellow, #f5c400);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+}
+
+.camera-layer .surface-status {
+  position: absolute;
+  left: 42px;
+  bottom: 34px;
+  color: var(--yellow, #f5c400);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+}
+
+.camera-layer .surface-status i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  background: var(--yellow, #f5c400);
+  animation: signal-blink 1s steps(1, end) infinite;
+}
+
+/* Remote: CH 04 CAMERA panel */
+.deck-camera {
+  background: #000;
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Mono", Monaco, monospace;
+}
+
+.deck-camera .camera-remote-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  color: var(--warm, #f0ede8);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.deck-camera #camera-remote-led {
+  width: 12px;
+  height: 12px;
+  background: var(--inactive, #2e2e2e);
+  flex: none;
+}
+.deck-camera #camera-remote-led.warm { background: var(--yellow, #f5c400); animation: signal-blink 800ms steps(1) infinite; }
+.deck-camera #camera-remote-led.live { background: var(--signal, #ff4f00); }
+
+.deck-camera-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.deck-panel .deck-camera-grid button {
+  min-height: 68px;
+  border: 0;
+  border-right: 1px solid var(--inactive, #2e2e2e);
+  border-bottom: 1px solid var(--inactive, #2e2e2e);
+  background: var(--program, #080808);
+  color: var(--warm, #f0ede8);
+  font-family: "Madrid Display", monospace;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 90ms ease, color 90ms ease;
+}
+.deck-panel .deck-camera-grid button:last-child { border-right: 0; }
+.deck-panel .deck-camera-grid button:active {
+  background: var(--signal, #ff4f00);
+  color: #000;
+}
